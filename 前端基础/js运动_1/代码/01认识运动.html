@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>Document</title>
+        <style>
+            #div1{width: 100px; height: 100px; background-color: red; position: absolute;}
+            *{margin: 0px; padding: 0px}
+        </style>
+        <script>
+            /* 
+                运动原理：
+                    人眼能够识别的最小的时间间隔是18帧。
+                    【注】电影院电影24帧。
+
+                运动里面的Bug
+                    1、运动不会停止
+                    2、当我们速度取某些值的时候，我们的运动到达目的值是停不下来的。
+                    3、当重复点击按钮的时候，滑块移动的越来越快
+                        【注】在每一次启动定时器之前，将上一次定时器关闭掉。
+                    4、到达目的值以后，再次点击按钮，div会向前运动。
+                        【注】将运动和停止分开。
+ 
+                运动框架：
+                    1、在每一次启动定时器之前，将上一次定时器关闭掉。
+                    2、将运动和停止分开。
+             */
+            window.onload = function(){
+                var oBtn = document.getElementById("btn1");
+                var oDiv = document.getElementById("div1");
+                var timer = null;
+                oBtn.onclick = function(){
+                    var speed = 7;
+                    clearInterval(timer);
+                    timer = setInterval(function(){
+                        if(oDiv.offsetLeft >= 500){
+                            clearInterval(timer);
+                        }else{
+                            oDiv.style.left = oDiv.offsetLeft + speed + 'px';
+                        }
+                        
+                    }, 30);
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <button id = 'btn1'>开始运动</button>
+        <div id = 'div1'></div>
+    </body>
+</html>

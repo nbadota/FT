@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>Document</title>
+        <script>
+            window.onload = function(){
+                var aBtns = document.getElementsByTagName("button");
+
+
+                /*
+                    刻舟求剑
+
+                    点击按钮，输出当前按钮的下标
+                */
+                for(let i = 0; i < aBtns.length; i++){
+                    //给每一个按钮添加一个自定义属性i
+                    aBtns[i].onclick = function(){
+                        alert(i);
+                   }
+                }
+
+                alert("循环结束了：" + i);
+            }
+        </script>
+    </head>
+    <body>
+        <button>按钮1</button>
+        <!-- index = 0 onclick = func -->
+        <button>按钮2</button>
+        <!-- index = 1 onclick = func -->
+        <button>按钮3</button>
+        <!-- index = 2 onclick = func -->
+    </body>
+</html>

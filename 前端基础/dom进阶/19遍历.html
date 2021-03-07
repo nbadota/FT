@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>Document</title>
+        <script>
+            /* 
+                数组：
+                    for循环
+                    for...in快速遍历
+                    forEach
+            */
+            var arr = [10, 20, 30, 40, 50];
+            for(var i = 0; i < arr.length; i++){
+                document.write("for, " + i + ", " + arr[i] + "<br/>");
+            }
+
+            for(var i in arr){
+                document.write("forin, " + i + ", " + arr[i] + "<br/>");
+            }
+
+
+            arr.forEach(function(item, index, arr){
+                document.write("forEach, " + index + ", " + item + "<br/>");
+            });
+
+
+
+            //对象遍历
+            var person = {
+                username: "钢铁侠",
+                age: 18,
+                sex: "男"
+            };
+
+            //对象遍历  for...in
+
+            for(var i in person){
+                // i  是当前遍历到的属性
+                document.write("对象遍历：" + i + ", " + person[i] + "<br/>");
+            }
+            
+        </script>
+    </head>
+    <body>
+        
+    </body>
+</html>

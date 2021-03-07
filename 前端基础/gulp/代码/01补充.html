@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>Document</title>
+        <script src = "MQuery的封装/jquery-1.10.1.min.js"></script>
+        <script>
+
+            /* 
+                JQ bind 类似于on方法
+                绑定
+             */
+
+
+           
+           /*  let sum = new Function('a', 'b', 'return a + b');
+
+            function sum(a, b){
+                return a + b;
+            }
+
+            alert( sum(1, 2) ); // 3 */
+            
+
+            /* $(function(){
+                alert($("#div1").hasClass("box1"));
+                $(document).bind("click", function(){
+                    alert(1);
+                })
+            }) */
+            // alert(undefined === false);
+
+            forEach=function (arr,fn) {
+                for(var i=0,l=arr.length;i<l;i++){
+                    var c=arr[i];
+                    if(fn.call(c,i,c)===false){
+                        return false;
+                    }
+                }
+            };
+            function box1(index,num) {
+                console.log(index,num);
+            }
+            var arr=[10,9,8,7,6,5,4];
+            forEach(arr,box1)
+        </script>
+    </head>
+    <body>
+        <div id = 'div1' class = 'box1 box2'></div>
+    </body>
+</html>

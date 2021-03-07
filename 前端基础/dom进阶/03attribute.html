@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>Document</title>
+        <script>
+            /* 
+                setAttribute
+                getAttribute
+                removeAttribute()
+            */
+            window.onload = function(){
+                var oDiv = document.getElementById("div1");
+
+                /* alert(oDiv.id);
+                alert(oDiv.title); */
+                
+                /* alert(oDiv.getAttribute("id"));
+                alert(oDiv.getAttribute("title")); */
+
+                /* 
+                    1、class的访问
+                    2、支持自定义属性
+                */
+                /* alert(oDiv.className);
+                alert(oDiv.getAttribute("class")); */
+
+                /* alert(oDiv.xxx);
+                alert(oDiv.getAttribute("xxx")); */
+
+
+                // oDiv.className = 'box4';
+                /* oDiv.zzz = 'ooo';
+                alert(oDiv.zzz); */
+
+                /* oDiv.setAttribute("class", 'box5');
+                oDiv.setAttribute("zzz", 'ooo'); */
+
+                oDiv.className = '';
+                oDiv.removeAttribute("title");
+
+            }
+        </script>
+    </head>
+    <body>
+        <div id = 'div1' title = 'hello'  class = 'box' xxx = 'yyy'>div</div>
+    </body>
+</html>

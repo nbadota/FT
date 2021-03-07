@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<style>
+			#div1{width: 50px; height: 50px; background-color: red; position: absolute; left: 100px; top: 200px}
+			#div2{width: 50px; height: 50px; background-color: blue; position: absolute; left: 500px; top: 300px}
+			div{width: 5px; height: 5px; border-radius: 50%; position: absolute; background-color: black}
+		</style>
+		<script src = 'jquery-1.10.1.min.js'></script>
+		<script src = 'parabola.js'></script>
+		<script>
+			/*
+				抛物线，是通过面向对象封装的构造。
+			 */
+			window.onload = function(){
+				var oDiv1 = document.getElementById("div1");
+				var oDiv2 = document.getElementById("div2");
+
+				var aBtns = document.getElementsByTagName("button");
+
+				//1、创建一个抛物线对象
+				var bool = new Parabola({
+					el: "#div1",
+					targetEl: "#div2",
+					duration: 4000,
+					curvature: 0.005,
+					callback: function(){
+						alert("动画结束了");
+					},
+					stepCallback: function(){
+						var node = document.createElement("div");
+						node.style.left = oDiv1.offsetLeft + 'px';
+						node.style.top = oDiv1.offsetTop + 'px';
+						document.body.appendChild(node);
+					},
+					// autostart: true
+
+				})
+
+				aBtns[0].onclick = function(){
+					bool.start();
+				}
+
+				aBtns[1].onclick = function(){
+					bool.stop();
+				}
+
+				aBtns[2].onclick = function(){
+					bool.reset();
+				}
+
+				aBtns[3].onclick = function(){
+					//重置抛物线的参数
+					bool.setOptions({
+						targetEl: null,
+						offset: [500, 200],
+						duration: 2000
+					})
+				}
+
+			}
+		</script>
+	</head>
+	<body>
+		<button>开始</button>
+		<button>暂停</button>
+		<button>重置</button>
+		<button>setOptions</button>
+		<div id = 'div1'></div>
+		<div id = 'div2'></div>
+	</body>
+</html>

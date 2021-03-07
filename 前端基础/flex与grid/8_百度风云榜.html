@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    .box{ width:280px; height:352px; margin:20px auto; display: grid;
+        grid-template-columns: repeat(3 , 1fr);
+        grid-template-rows: repeat(4 , 1fr);
+        grid-template-areas: 
+        "a1 a2 a2"
+        "a3 a2 a2"
+        "a4 a4 a5"
+        "a6 a7 a7";
+        grid-gap: 6px 6px;
+    }
+    .box div{ background:red;}
+    .box div:nth-child(1){ grid-area: a1;}
+    .box div:nth-child(2){ grid-area: a2;}
+    .box div:nth-child(3){ grid-area: a3;}
+    .box div:nth-child(4){ grid-area: a4;}
+    .box div:nth-child(5){ grid-area: a5;}
+    .box div:nth-child(6){ grid-area: a6;}
+    .box div:nth-child(7){ grid-area: a7;}
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</body>
+</html>

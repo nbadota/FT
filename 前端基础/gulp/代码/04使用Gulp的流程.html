@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>Document</title>
+        <script>
+            /* 
+                1、下载和安装NodeJS
+                    http://nodejs.cn/download/
+                2、启动Nodejs
+                    windows 
+                        windows键(开始键) => nodeJS文件 => nodejs prompt
+                        苹果电脑 => 终端
+
+                    node -v  查看安装的nodeJS的版本
+                    （拓展知识）nvm  自行查阅，自行安装
+                3、安装nodeJS   
+                    npm  管理第三方包的包管理器  （下载源是国外的网站)
+                4、安装cnpm  淘宝镜像
+                    https://npm.taobao.org/
+                    命令：npm install -g cnpm --registry=https://registry.npm.taobao.org
+                
+                5、cnpm下载一些数据，是从国内淘宝服务器上下载数据。
+
+
+                6、安装gulp到本地
+                    【注】windows不用注意这个细节，苹果电脑的每一条命令前面都必须加sudo(可以需要输入密码)
+                    <1>全局安装gulp
+                        cnpm install gulp -g
+                        gulp -v  查看安装的gulp版本
+
+                    <2>进入到你想开发项目的这个目录
+                        【注】windows的电脑是分磁盘的，如果你在别的盘创建的文件夹，应该先去切换盘符
+                            D:  + enter
+                            cd 目录路径
+                        清屏：window  cls       苹果/linux：clear
+                
+                7、初始化当前目录
+                        cnpm init
+                    【注】生成package.json的文件，存放你当前项目一些配置信息。
+
+                8、在当前项目里面安装gulp到本地
+                        cnpm install gulp@3.9.1 --save-dev
+                        cnpm i gulp@3.9.1 -D
+
+                        --save  将这个文件，安装到本地的当前文件夹
+                        -dev    将安装gulp的信息保存在package.json里面
+                
+                9、创建一个gulpfile.js的文件，专门gulp去编写任务的。
+                10、gulpfile.js中编写任务，需要在控制台通过
+                        gulp 任务名   运行你编写好的任务
+
+                11、给gulp添加插件
+                        https://gulpjs.com/plugins/
+                    
+                    使用第三方插件的步骤：
+                        commonJS规范
+                    <1>先去下载插件到本地
+                        cnpm install 插件名字 --save-dev
+                        cnpm i 插件名字 -D
+                    <2>通过require() 引入文件
+                    <3>查阅插件的用法
+
+                重点：JQuery编写的代码大家不要合并和压缩。
+                记住：给别人代码的时候，node_models删除
+                拿到这个项目以后：进入目录，重新下载所有的依赖文件 cnpm install
+
+                温馨提示：配置两个以上屏幕，进行前端开发。
+             */
+        </script>
+    </head>
+    <body>
+        
+    </body>
+</html>

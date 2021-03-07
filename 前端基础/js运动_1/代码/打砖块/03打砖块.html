@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<style>
+			#div1{width: 500px; height: 500px; border: 1px solid black; margin: 100px auto; position: relative;}
+			#ball{width: 20px; height: 20px; background-color: red; position: absolute; border-radius: 50%; left: 240px; bottom: 20px}
+			#bat{width: 100px; height: 20px; background-color: blue; position: absolute; bottom: 0px; left: 200px}
+			#brick div{width: 98px; height: 18px; border: 1px solid black; float: left;}
+		</style>
+		<script src = '../tool.js'></script>
+		<script>
+			window.onload = function(){
+				var oDiv = document.getElementById("div1");
+				var oBall = document.getElementById("ball");
+				var oBat = document.getElementById("bat");
+				var oBrick = document.getElementById("brick");
+				var aBricks = oBrick.getElementsByTagName("div");
+
+
+				//让拍子可以水平方向移动
+				dragX(oBat);
+
+				//创建对应的砖块
+				createBrick(50);
+
+
+				//随机一个水平方向的速度
+				var speedX = parseInt(Math.random() * 4) + 4;
+				//随机一个垂直方向的速度
+				var speedY = -(parseInt(Math.random() * 3) + 6);
+
+				setInterval(function(){
+					oBall.style.left = oBall.offsetLeft + speedX + 'px';
+					oBall.style.top = oBall.offsetTop + speedY + 'px';
+					if(oBall.offsetLeft >= 480 || oBall.offsetLeft <= 0){
+						speedX *= -1;
+					}
+					if(oBall.offsetTop <= 0){
+						speedY *= -1;
+					}
+					if(oBall.offsetTop >= 480){
+						alert("GAME OVER");
+						location.reload(); //重新刷新当前页面
+					}
+
+					//判断是否发生碰撞
+					if(konck(oBall, oBat)){
+						speedY *= -1;
+					}
+					//小球和砖块是否发生碰撞
+
+					for(var i = 0; i < aBricks.length; i++){
+						if(konck(oBall, aBricks[i])){
+							speedY *= -1;
+							oBrick.removeChild(aBricks[i]);
+						}
+					}
+				}, 30);
+
+
+
+			}
+
+			//封装一个可以水平方向拖拽的方法
+			function dragX(node){
+				node.onmousedown = function(ev){
+					var e = ev || window.event;
+					var offsetX = e.clientX - node.offsetLeft;
+
+					document.onmousemove = function(ev){
+						var e = ev || window.event;
+						var l = e.clientX - offsetX;
+						//限制出界
+						if(l <= 0){
+							l = 0;
+						}
+						if(l >= 400){
+							l = 400;
+						}
+						node.style.left = l + 'px';
+					}
+				}
+
+				document.onmouseup = function(){
+					document.onmousemove = null;
+				}
+			}
+
+			//创建砖块的函数 传入n，创建n块砖
+			function createBrick(n){
+				var oBrick = document.getElementById("brick");
+				for(var i = 0; i < n; i++){
+					var node = document.createElement("div");
+					node.style.backgroundColor = randomColor();
+					oBrick.appendChild(node);
+				}
+
+				/*
+					相对定位转绝对定位
+					1、如果砖块点击以后消失不见，其他的砖块位置不受影响，那么我们必须使用绝对定位。
+					2、创建的砖块，使用相对定位非常方便
+				 */
+				//相对定位 => 绝对定位 (文档流的转换)
+				
+				var aBricks = oBrick.getElementsByTagName("div");
+				for(var i = 0; i < aBricks.length; i++){
+					aBricks[i].style.left = aBricks[i].offsetLeft + 'px';
+					aBricks[i].style.top = aBricks[i].offsetTop + 'px';
+				}
+
+				//必须当前所有的div拥有坐标以后，才能将position = absolute
+				for(var i = 0; i < aBricks.length; i++){
+					aBricks[i].style.position = 'absolute';
+				}
+				
+
+			}
+
+			function konck(node1, node2){
+				var l1 = node1.offsetLeft;
+				var r1 = node1.offsetLeft + node1.offsetWidth;
+				var t1 = node1.offsetTop;
+				var b1 = node1.offsetTop + node1.offsetHeight;
+
+				var l2 = node2.offsetLeft;
+				var r2 = node2.offsetLeft + node2.offsetWidth;
+				var t2 = node2.offsetTop;
+				var b2 = node2.offsetTop + node2.offsetHeight;
+
+				if(l2 >= r1 || r2 <= l1 || t2 >= b1 || b2 <= t1){
+					return false;
+				}else{
+					return true;
+				}
+
+			}
+		</script>
+	</head>
+	<body>
+		<div id = 'div1'>
+			<div id = 'ball'></div>
+			<div id = 'bat'></div>
+			<div id = 'brick'>
+				<!-- <div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div> -->
+			</div>
+		</div>
+	</body>
+</html>
+
+

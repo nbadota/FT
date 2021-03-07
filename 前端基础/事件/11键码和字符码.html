@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>Document</title>
+        <script>
+            /* 
+                键码:只在keydown下支持。
+                【注】不管是在大写字母还是小写字母的情况下，返回的统一都是大写字母的ASIIC码值。
+                    keyCode
+                    which
+
+                
+                字符码: 只在keypress下支持
+                【注】区分大小写，并且按下的时候我当前按下这个键的ASCII码值。
+                【注】
+                    charCode
+                    which
+             */
+             window.onload = function(){
+                /*  window.onkeydown = function(ev){
+                     var e = ev || window.event;
+                    //  alert(e.keyCode);
+                    // alert(e.which);
+                    var which = e.keyCode || e.which;
+                    alert(which); //回车=13
+                 } */
+
+                 window.onkeydown = function(ev){
+                    var e = ev || window.event;
+                    var which = e.key;
+
+                    alert(which);
+                 }
+             }
+        </script>
+    </head>
+    <body>
+        
+    </body>
+</html>

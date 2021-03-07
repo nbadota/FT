@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>Document</title>
+        <script>
+            /* 
+                history 对象   window.history  掌管的是，当前窗口(注意不是浏览器)历史记录(只要加载url不一样就会产生历史记录)
+                    属性 
+                        history.length 输出当前窗口历史记录的条数
+                    方法
+                        history.back()  返回上一条历史记录
+                        history.forward() 前进到下一条历史记录
+                        history.go()
+                            参数： 0  刷新当前页面
+                                  正整数 前进n条记录
+                                  负整数 后退n条记录
+             */
+
+            
+        </script>
+    </head>
+    <body>
+        <button onclick = 'alert(history.length);'>获取历史记录的条数</button>
+        <button onclick = 'history.back();'>back</button>
+        <button onclick = 'history.forward();'>forward</button>
+        <button onclick = 'history.go(2)'>go</button>
+    </body>
+</html>

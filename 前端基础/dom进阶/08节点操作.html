@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>Document</title>
+        <script>
+            /*
+                document.write()
+                document.write()
+                    【注】会覆盖页面上原有的内容。
+
+                createElement()
+                createElement()
+                    格式：document.createElement()
+                    参数：标签名
+                    返回值：创建好的这个节点
+
+                appendChild()
+                appendChild()
+                    格式：node1.appendChild(node2);
+                    功能：将node2节点插入到node1节点子节点的末尾
+
+                createTextNode()
+                createTextNode()
+                    格式：document.createTextNode(文本);
+                    功能：创建文本节点(纯文本)
+
+                insertBefore()
+                insertBefore()
+                    格式：box1.parentNode.insertBefore(box2, box1);
+                    功能：将box2添加到box1的前面
+
+                replaceChild()
+                replaceChild()
+                    格式：box1.parentNode.replaceChild(box2, box1);
+                    功能：用box2节点将box1节点替换掉。
+
+                cloneNode()
+                cloneNode()
+                    格式：node.cloneNode()
+                    格式2：node.cloneNode(true);  克隆节点本身和子节点
+                    返回值：克隆出来的新节点
+
+
+                removeChild()
+                removeChild()
+                    格式：box.parentNode.removeChild(box);
+                    功能：将box节点从页面上删除
+
+             */
+            window.onload = function(){
+                var oBtn = document.getElementById("btn1");
+                var oDiv = document.getElementById("div1");
+                oBtn.onclick = function(){
+                    // document.write("<h1>hello world</h1>");
+                    var oP = document.createElement("p");
+                    var oTxt = document.createTextNode("<h1>hello world</h1>");
+                    oP.appendChild(oTxt);
+
+
+                    //oDiv.appendChild(oP);
+
+                    //将oP节点插入到oDiv节点的前面
+                   // document.body.insertBefore(oP, oDiv);
+
+
+                    //用oP节点，将oDiv节点替换掉
+                    //document.body.replaceChild(oP, oDiv);
+
+
+                    // var newNode = oDiv.cloneNode();
+                    /* var newNode = oDiv.cloneNode(true);
+                    document.body.appendChild(newNode); */
+
+                    //document.body.removeChild(oDiv);
+
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div id = 'div1'>
+            <em>em</em>
+            div文本
+            <strong>strong</strong>
+        </div>
+        <button id = 'btn1'>节点操作</button>
+    </body>
+</html>

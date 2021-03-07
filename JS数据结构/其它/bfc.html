@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style type="text/css">
+        .container {
+            background-color: #f1f1f1;
+        }
+        .left {
+            float: left;
+        }
+        .bfc {
+            overflow: hidden; /* 触发元素 BFC */
+        }
+        .clear:after {
+            content: '';
+            display: table;
+            clear: both;
+        }
+        a:link {
+            color: red;
+        }
+        a:visited {
+            color: coral;
+        }
+        a:hover {
+            color: blue;
+        }
+        a:active {
+            color: aqua;
+        }
+    </style>
+</head>
+<body>
+<div class="container clear">
+    <img src="https://www.imooc.com/static/img/index/logo.png" class="left" style="magin-right: 10px;" title="hhhhh"/>
+    <p class="bfc">某一段文字……</p>
+    <a href="#">标签</a>
+</div>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>Document</title>
+        <script>
+            /* 
+                open()
+                    第一个参数：跳转的url  打开一个新窗口，加载url
+                    第二个参数：字符串，给打开的窗口起一个名字
+                    第三个参数：一串特殊含义的字符串，可以控制打开窗口的属性
+
+             */
+            function btnClick(){
+                // window.open()
+                open("https://www.baidu.com", "_blank", 'width=400,height=400,top=200,left=300,scrollbars=yes');
+            }
+        </script>
+    </head>
+    <body>
+        <button onclick = 'btnClick();'>打开窗口</button>
+    </body>
+</html>

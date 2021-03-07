@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>Document</title>
+        <style>
+            #menu{width: 100px; height: 100px; background-color: red; position: absolute; right: 0px}
+            *{margin: 0px; padding: 0px}
+        </style>
+        <script>
+            window.onload = function(){
+                var oMenu = document.getElementById("menu");
+                //获取当前的目的值
+                var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+                var windowHeight = document.documentElement.clientHeight || document.body.clientHeight;
+                var iH = parseInt(scrollTop + (windowHeight - oMenu.offsetHeight) / 2);
+
+                startMove(iH);
+
+
+                window.onscroll = function(){
+                    var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+                    var windowHeight = document.documentElement.clientHeight || document.body.clientHeight;
+                    var iH = parseInt(scrollTop + (windowHeight - oMenu.offsetHeight) / 2);
+
+                    startMove(iH);
+                }
+            }
+
+            var timer = null;
+            function startMove(iTarget){
+                var oMenu = document.getElementById("menu");
+                clearInterval(timer);
+                timer = setInterval(function(){
+                    //计算速度
+                    var speed = (iTarget - oMenu.offsetTop) / 8;
+                    speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+
+                    //运动和停止分开
+                    if(oMenu.offsetTop == iTarget){
+                        clearInterval(timer);
+                    }else{
+                        oMenu.style.top = oMenu.offsetTop + speed + 'px';
+                        document.title = oMenu.offsetTop + ", " + iTarget;
+                    }
+
+                }, 30);
+            }
+        </script>
+    </head>
+    <body style = 'height: 3000px'>
+        <div id = 'menu'></div>
+    </body>
+</html>

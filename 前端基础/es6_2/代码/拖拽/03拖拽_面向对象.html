@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>Document</title>
+        <style>
+            #div1{width: 200px; height: 200px; background-color: red; position: absolute}
+        </style>
+        <script>
+            /* 
+                改造
+                    1、不能有函数嵌套
+                    2、可以有全局变量
+
+                面向过程 => 面向对象
+                    1、window.onload => 构造函数
+                    2、全局变量 => 构造函数的属性
+                    3、全局函数 => 构造函数的方法
+             */
+            // var oDiv = null;
+            // var offsetX = 0;
+            // var offsetY = 0;
+
+
+           function Drag(id){
+                this.oDiv = document.getElementById(id);
+                this.oDiv.onmousedown = this.funcDown;
+                document.onmouseup = this.funcUp;
+            }
+
+            Drag.prototype.funcDown = function(ev){
+                alert(this);
+                var e = ev || window.event;
+                // alert(e.offsetX + ", " + e.offsetY);
+                this.offsetX = e.clientX - this.oDiv.offsetLeft;
+                this.offsetY = e.clientY - this.oDiv.offsetTop;
+
+                document.onmousemove = this.funcMove;
+            }
+
+            Drag.prototype.funcMove = function (ev){
+                var e = ev || window.event;
+                this.oDiv.style.left = e.clientX - this.offsetX + 'px';
+                this.oDiv.style.top = e.clientY - this.offsetY + 'px';
+            }
+            Drag.prototype.funcUp = function(){
+                document.onmousemove = null;
+            }
+
+            window.onload = function(){
+                new Drag("div1");
+            }
+        </script>
+    </head>
+    <body>
+        <div id = 'div1'></div>
+    </body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+   /*  #parent{ width:300px; height:300px; border:1px black solid; margin:20px auto; display: flex;}
+    #box{ width:150px; height:50px; background:red; margin:auto;} */
+
+    #box{ width:300px; height:300px; border:1px black solid; margin:20px auto; display: flex; flex-direction: column-reverse;}
+    #box div{ width:50px; height:50px; color:white; line-height: 50px; text-align: center; background:red;}
+
+    #box2{ width:300px; height:300px; border:1px black solid; margin:20px auto; display: flex; /* flex-wrap:wrap; flex-direction: column; */ flex-flow: column wrap;}
+    #box2 div{ width:50px; height:50px; color:white; line-height: 50px; text-align: center; background:red;}
+
+    #box3{ width:300px; height:300px; border:1px black solid; margin:20px auto; display: flex; justify-content: space-evenly; flex-wrap:wrap;}
+    #box3 div{ width:50px; height:50px; color:white; line-height: 50px; text-align: center; background:red;}
+
+    #box4{ width:300px; height:300px; border:1px black solid; margin:20px auto; display: flex; justify-content: space-evenly;  flex-wrap:wrap;  align-items: flex-start; align-content: space-around; }
+    #box4 div{ width:50px; background:red;}
+    </style>
+</head>
+<body>
+    <!-- <div id="parent">
+        <div id="box"></div>
+    </div> -->
+
+    <!-- <div id="box">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+    </div> -->
+
+    <!-- <div id="box2">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>1</div>
+        <div>2</div>
+    </div> -->
+
+    <!-- <div id="box3">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+    </div> -->
+    <div id="box4">
+        <div>测试文本</div>
+        <div>测试文本测试文本</div>
+        <div>测试文本测试文本测试文本</div>
+        <div>测试文本</div>
+        <div>测试文本</div>
+        <div>测试文本测试文本</div>
+        <div>测试文本测试文本测试文本</div>
+        <div>测试文本</div>
+    </div>
+</body>
+</html>

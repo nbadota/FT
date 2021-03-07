@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>Document</title>
+        <script>
+            /* 
+                中括号解构
+                大括号解构
+            */
+
+            // var x = 10, y = 20, z = 30;
+
+            /* var [x, y, z] = [10, 20, 30];
+            alert(x + ", " + y); */
+           /*  var [x, [a, b], y] = [10, [20], 40];
+            alert(a + ", " + y);
+            alert(b); */
+
+
+           /*  var {name, age, sex} = {
+                age: 18,
+                name: "钢铁侠",
+                sex: "男"
+            };
+
+            alert(name);
+            alert(age);
+            alert(sex); */
+
+
+            /* 
+                使用解构的好处：
+                    1、交换两个数
+                    2、函数可以返回多个值
+                    3、函数定义参数，和传入参数的顺序改变
+                        【注】参数可以带默认值
+                    4、快速取出数组中的某一个元素。
+            */
+            var arr = [10, 20, 30, 40, 50];
+            var {0:first, 4:last} = arr;
+            alert(first);
+            alert(last == arr[4]);
+
+
+            let [x, y] = [10, 20];
+           
+           [x, y] = [y, x];
+
+           alert(x + ", " + y);
+
+           /* function show(){
+               return ["结果1", "结果2", "结果3"];
+           }
+
+           var [a, b, c] = show();
+           alert(a + ", " + c); */
+
+
+           /* function showSelf(name, age, sex){
+               alert("我叫" + name + "，今年" + age + ",是一位" + sex + "性");
+           }
+
+        //    showSelf("小明", 18, "男");
+            showSelf(18, "男", "小明"); */
+
+            /* function showSelf({name, age, sex = "男"}){
+               alert("我叫" + name + "，今年" + age + ",是一位" + sex + "性");
+            }
+            showSelf({
+                age: 18,
+                name: "小明",
+                sex: "女"
+            }) */
+        </script>
+    </head>
+    <body>
+        
+    </body>
+</html>

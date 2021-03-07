@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>Document</title>
+        <style>
+            #div1{width: 600px; height: 600px; border: 1px solid black; position: relative; margin: 100px auto}
+            #ball{width: 20px; height: 20px; background-color: red; border-radius: 50%; position: absolute; bottom: 30px; left: 290px}
+            #bat{width: 100px; height: 30px; background-color: blue; position: absolute; bottom: 0px; left: 250px}
+            #brick div{width: 98px; height: 18px; border: 1px solid black; float: left;}
+        </style>
+        <script>
+            window.onload = function(){
+                var oDiv = document.getElementById("div1");
+                var oBall = document.getElementById("ball");
+                var oBat = document.getElementById("bat");
+                var oBrick = document.getElementById("brick");
+                var aBricks = oBrick.getElementsByTagName("div");
+
+                dragX(oBat);
+                createBrick(60);
+
+                //让小球可以水平方向运动，随机一个水平方向的速度
+                var speedX = parseInt(Math.random() * 4) + 3;
+                //随机一个垂直方向的速度
+                var speedY = -(parseInt(Math.random() * 3) + 5);
+                
+
+                setInterval(function(){
+                    oBall.style.left = oBall.offsetLeft + speedX + 'px';
+                    oBall.style.top = oBall.offsetTop + speedY + 'px';
+                    if(oBall.offsetLeft >= 580 || oBall.offsetLeft <= 0){
+                        speedX *= -1;
+                    }
+
+                    if(oBall.offsetTop <= 0){
+                        speedY *= -1;
+                    }
+                    if(oBall.offsetTop >= 580){
+                        alert("GAME OVER");
+                        window.location.reload();
+                    }
+
+                    /* 
+                        进行碰撞检测
+                    */
+                   //1、小球和拍子的碰撞检测
+                   if(konck(oBall, oBat)){
+                       speedY *= -1;
+                   }
+                   //2、小球和砖块发生碰撞
+                   for(var i = 0; i < aBricks.length; i++){
+                       if(konck(aBricks[i], oBall)){
+                           speedY *= -1;
+                           //砖块要被删除
+                           oBrick.removeChild(aBricks[i]);
+                           break;
+                       }
+                   }
+
+                }, 30);
+            }
+
+            function dragX(node){
+                node.onmousedown = function(ev){
+                    var e = ev || window.event;
+                    var offsetX = e.clientX - node.offsetLeft;
+                    document.onmousemove = function(ev){
+                        var e = ev || window.event;
+                        var l = e.clientX - offsetX;
+                        //限制出界
+                        if(l <= 0){
+                            l = 0;
+                        }
+                        if(l >= 500){
+                            l = 500;
+                        }
+                        node.style.left = l + 'px';
+                    }
+                }
+                document.onmouseup = function(){
+                    document.onmousemove = null;
+                }
+            }
+
+
+            //创建砖块  n的意思是创建n个砖块
+            /* 
+               文档流的转换：
+               相对定位  转   绝对定位
+            */
+            function createBrick(n){
+                var oBrick = document.getElementById("brick");
+                for(var i = 0; i < n; i++){
+                    var node = document.createElement("div");
+                    node.style.backgroundColor = randomColor();
+                    oBrick.appendChild(node);
+                }
+                //文档流转换
+                var aBricks = oBrick.getElementsByTagName("div");
+                for(var i = 0; i < aBricks.length; i++){
+                    aBricks[i].style.left = aBricks[i].offsetLeft + 'px';
+                    aBricks[i].style.top = aBricks[i].offsetTop + 'px'; 
+                }
+                for(var i = 0; i < aBricks.length; i++){
+                    aBricks[i].style.position = 'absolute';
+                }
+            }
+            function randomColor(){
+                var str = "rgba(" + parseInt(Math.random() * 256) + "," + parseInt(Math.random() * 256) + "," + parseInt(Math.random() * 256) + ",1)";
+                return str;
+            }
+            /* 
+                思路：找到如何是绝对碰不上的。
+            */
+
+            function  konck(node1, node2){
+                var l1 = node1.offsetLeft;
+                var r1 = node1.offsetLeft + node1.offsetWidth;
+                var t1 = node1.offsetTop;
+                var b1 = node1.offsetTop + node1.offsetHeight;
+
+                var l2 = node2.offsetLeft;
+                var r2 = node2.offsetLeft + node2.offsetWidth;
+                var t2 = node2.offsetTop;
+                var b2 = node2.offsetTop + node2.offsetHeight;
+
+                if(l2 > r1 || r2 < l1 || t2 > b1 || b2 < t1){
+                    return false;
+                }else{
+                    return true;
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div id = 'div1'>
+            <div id = 'ball'></div>
+            <div id = 'bat'></div>
+            <div id = 'brick'>
+                <!-- <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div> -->
+            </div>
+        </div>
+    </body>
+</html>

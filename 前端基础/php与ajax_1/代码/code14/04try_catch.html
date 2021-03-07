@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>Document</title>
+        <script>
+            /* 
+                try{
+                    尝试执行的代码
+                }catch(error){
+                    error 错误对象，try括号中代码执行的异常信息;
+                    补救代码;
+                }
+                执行过程：
+                    1、先去执行try中的代码
+                    2、如果try中的代码执行正常，catch中的代码就不执行了
+                    3、如果try中的代码执行异常，直接执行catch中的代码进行补救
+                
+                【注】更多的用在代码调试和后期维护。
+
+
+                try_throw_catch
+                throw 手动抛出异常
+                格式：
+                    try{
+                        尝试执行的代码
+                        throw new Error("异常信息文本")
+                    }catch(error){
+                        error 错误对象，try括号中代码执行的异常信息;
+                        补救代码;
+                    }
+             */
+
+             /* try{
+                 alert("异常信息之前");
+                 alert(num);
+                 alert("异常信息之后");
+             }catch(error){
+                alert("补救代码，Error:" + error);
+             } */
+
+             var num = 10;
+
+             try{
+                 alert("异常信息之前");
+                //  throw new Error("这是演习，不要紧张");
+                
+                
+
+                 alert("异常信息之后");
+                 
+
+                 alert(3);
+
+                //要求num是5
+                 if(num != 5){
+                    throw new Error("num的值不是5");
+                 }
+                 
+             }catch(error){
+                alert("补救代码，Error:" + error);
+             }
+        </script>
+    </head>
+    <body>
+        
+    </body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>Document</title>
+        <style>
+            #div1{background-color: blue}
+            .box{height: 300px; background-color: blue}
+        </style>
+        <script>
+            window.onload = function(){
+                var oDiv = document.getElementById("div1");
+
+                /*
+                    通过.style.xxx的方式只能访问内联的css样式。
+                 */
+                /* alert(oDiv.style.width);
+                alert(oDiv.style.backgroundColor);
+                alert(oDiv.style.height); */
+
+
+                // alert(oDiv.currentStyle['height']);  //IE兼容
+                // alert(getComputedStyle(oDiv)["height"]); //火狐、谷歌
+
+                /*
+                    获取当前的有效样式
+                    系统提供了两个方法(不同的浏览器)：
+                 */
+
+                // alert(getStyle(oDiv, "height"));
+
+
+                /*
+                    设置样式
+                    .style.xxx方式设置css样式。
+                */
+                let oDiv1 = document.getElementById("div1")
+                console.log(getComputedStyle(oDiv1)["height"])
+                var oBtn = document.getElementById("btn1");
+                oBtn.onclick = function(){
+                    oDiv.style.backgroundColor = 'orange';
+                    oDiv.style.height = '500px';
+                }
+            }
+
+            //跨浏览器的兼容
+            function getStyle(node, cssStyle){
+                return node.currentStyle ? node.currentStyle[cssStyle] : getComputedStyle(node)[cssStyle];
+            }
+        </script>
+    </head>
+    <body>
+        <div id = 'div1' style = 'width: 200px; background-color: red' class = 'box'></div>
+
+        <button id = 'btn1'>修改样式</button>
+    </body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>Document</title>
+        <script>
+            function Person(name, sex, age){
+                this.name = name;
+                this.sex = sex;
+                this.age = age;
+            }
+            Person.prototype.showSelf = function(){
+                alert(`我是一个叫${this.name},今年${this.age}岁的${this.sex}孩`);
+            }
+
+            //白领人
+            function Worker(name, sex, age, job){
+                //1、构造函数的伪装 -- 继承父级的属性  
+                Person.call(this, name, sex, age);
+                this.job = job;
+            }
+            //2、原型链 继承父一级的方法
+            //<1>通过for...in遍历继承
+            /* for(var funcName in Person.prototype){
+                Worker.prototype[funcName] = Person.prototype[funcName];
+            } */
+            //<2>Object.create()
+            // Worker.prototype = Object.create(Person.prototype);
+            //<3>调用构造函数继承
+            Worker.prototype = new Person();
+            
+            Worker.prototype.showJob = function(){
+                alert("我的工作是" + this.job);
+            }
+
+            var w1 = new Worker("小米", "男", 20, "程序员");
+            w1.showSelf();
+            w1.showJob();
+
+
+
+
+
+            //ECMA6class语法
+            class Person{
+                //class属性添加
+                constructor(name, sex, age){
+                    this.name = name;
+                    this.sex = sex;
+                    this.age = age;
+                }
+                showSelf(){
+                    alert(`我是一个叫${this.name},今年${this.age}岁的${this.sex}孩`);
+                }
+            }
+
+            var p1 = new Person("blue", "男", 18);
+            p1.showSelf();
+
+            //extends 继承
+            class Worker extends Person{
+                constructor(name, sex, age, job){
+                    //1、继承到父一级的属性
+                    super(name, sex, age);
+                    this.job = job;
+                }
+                showJob(){
+                    alert("我的工作是" + this.job);
+                }
+            }
+
+            var w1 = new Worker("小米", "男", 20, "程序员");
+            w1.showSelf();
+            w1.showJob();
+        </script>
+    </head>
+    <body>
+        
+    </body>
+</html>

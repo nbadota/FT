@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>Document</title>
+        <script>
+            /*
+                阻止超链接的默认行为：
+                    1、简陋的阻止a链接默认行为的方式
+                        缺点：运行到了return，后续的内容我们就执行不到了。
+                    2、规范的方法
+                        e.preventDefault();   W3C
+                         window.event.returnValue = false;  低版本IE浏览器
+
+             */
+            window.onload = function(){
+                var a1 = document.getElementById("a1");
+               /*  a1.onclick = function(){
+                    return confirm("你确定要离开当前页面么？");
+                } */
+
+                a1.onclick = function(ev){
+                    var e = ev || window.event;
+
+                    preDef(e);
+
+                    alert("后续的操作");
+                }
+            }
+
+            /*
+                编写一个跨浏览器阻止超链接默认行为的函数
+             */
+             function preDef(e){
+                 if(e.preventDefault){
+                     e.preventDefault();
+                 }else{
+                     window.event.returnValue = false;
+                 }
+             }
+        </script>
+    </head>
+    <body>
+        <a id = 'a1' href="https://www.baidu.com">百度</a>
+    </body>
+</html>

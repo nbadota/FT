@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>Document</title>
+        <style>
+            #img1{opacity: 0.3; filter: alpha(opacity=30);}
+        </style>
+        <script>
+            window.onload = function(){
+                var oImg = document.getElementById("img1");
+                oImg.onmouseenter = function(){
+                    //30 => 100
+                    startMove(100);
+                }
+                oImg.onmouseleave = function(){
+                    //100 => 30
+                    startMove(30);
+                }
+
+                /* 
+                    类似于透明度这类型的css属性，使用中间变量替代计算。
+                 */
+                var alpha = 30;
+                var timer = null;
+                function startMove(iTarget){
+                    var oImg = document.getElementById("img1");
+                    var speed = 2;
+                    clearInterval(timer);
+                    timer = setInterval(function(){
+                        if(alpha > iTarget){
+                            speed = -Math.abs(speed);
+                        }else{
+                            speed = Math.abs(speed);
+                        }
+                        //1、取当前值
+                        if(alpha == iTarget){
+                            clearInterval(timer);
+                        }else{
+                            alpha += speed;
+                            //給当前图片上设置透明度，考虑浏览器兼容
+                            oImg.style.opacity = alpha / 100;
+                            oImg.style.filter = "alpha(opacity=" + alpha + ")";
+                            document.title = alpha;
+                        }
+                    }, 30);
+                   
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <img id = 'img1' src="timg.jpeg" alt=""/>
+    </body>
+</html>

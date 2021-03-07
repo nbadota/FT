@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>Document</title>
+        <script>
+            /* 
+                CommonJS规范（服务器）编写代码
+                声明:
+                    module.exports = {
+                        outA: showA,
+                        outB: showB
+                    }
+                引入：（同步执行）
+                    var moduleA = require('moduleA.js');
+                    moduleA.outA();
+                    moduleA.outB();
+
+
+                AMD规范：（客户端/浏览器）
+                声明：
+                    define(function(){
+                        //代码
+                        return {
+                            outA: showA,
+                            outB: showB
+                        }
+                    })
+                引入：（异步执行）
+                    require("moduleA.js", function(moduleA){
+
+                        //这里的代码。模块引入之后执行。
+                        moduleA.putA();
+                        moduleA.outB();
+                    })
+
+                    alert("hello world");
+            
+                小彩蛋：CMD  阿里
+
+
+                ECMA6（模块化规范）
+                声明：
+                    export = {
+                        outA: showA
+                        outB: showB
+                    }
+
+                引入：
+                    import moduleA from "moduleA.js"
+                    moduleA.outA()
+                    moduleA.outB();
+            */
+        </script>
+    </head>
+    <body>
+        
+    </body>
+</html>

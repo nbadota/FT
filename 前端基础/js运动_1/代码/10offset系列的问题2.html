@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>Document</title>
+        <style>
+            #div1{width: 200px; height: 100px; background-color: red; border: 1px solid #000000}
+        </style>
+        <script>
+
+            /* 
+                接下来，实现运动的函数里面，都用getStyle方法来获取当前有效样式。
+            */
+
+            window.onload = function(){
+                var oDiv = document.getElementById("div1");
+                setInterval(function(){
+                    //获取当前值
+                    var iCur = parseInt(getStyle(oDiv, "width"));
+                    alert(iCur);
+                    oDiv.style.width = iCur - 1 + 'px';
+                }, 30);
+            }
+            //获取当前有效样式浏览器兼容的写法
+            function getStyle(node, cssStr){
+                return node.currentStyle ? node.currentStyle[cssStr] : getComputedStyle(node)[cssStr];
+            }
+        </script>
+    </head>
+    <body>
+        <div id = 'div1'></div>
+    </body>
+</html>

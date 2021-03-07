@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>Document</title>
+        <script>
+            /*
+                target   目标对象/触发对象  事件对象的属性
+                【注】这个事件是由谁而起的。
+                IE8以下不兼容 window.event.srcElement;
+
+
+                this 永远指向当前函数的主人。
+
+             */
+
+             window.onload = function(){
+                 var oLi = document.getElementById("li1");
+                 /* oLi.onclick = function(ev){
+                     var e = ev || window.event;
+                     var target = e.target || window.event.srcElement;
+                    //  alert(this.innerHTML);
+                    alert(target.innerHTML);
+
+                 } */
+
+                 var oUl = document.getElementById("ul1");
+                 oUl.onclick = function(ev){
+                    var e = ev || window.event;
+                    var target = e.target || window.event.srcElement;
+                    alert(this.tagName);
+                    alert(target.nodeName);
+                 }
+             }
+        </script>
+    </head>
+    <body>
+        <ul id = 'ul1'>
+            <li id = 'li1'>1111</li>
+            <li>2222</li>
+            <li>3333</li>
+        </ul>
+    </body>
+</html>

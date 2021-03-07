@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<style>
+			*{margin: 0px; padding: 0px}
+			div{width: 100px; height: 100px; position: absolute;}
+			#div1{left: 200px; top: 200px; background-color: blue}
+			#div2{left: 400px; top: 300px; background-color: red}
+		</style>
+		<script>
+			/*
+				逆向思维：什么情况下，两个物体绝对碰不到。
+			 */
+			
+			function konck(node1, node2){
+				var l1 = node1.offsetLeft;
+				var r1 = node1.offsetLeft + node1.offsetWidth;
+				var t1 = node1.offsetTop;
+				var b1 = node1.offsetTop + node1.offsetHeight;
+
+				var l2 = node2.offsetLeft;
+				var r2 = node2.offsetLeft + node2.offsetWidth;
+				var t2 = node2.offsetTop;
+				var b2 = node2.offsetTop + node2.offsetHeight;
+
+				if(l2 >= r1 || r2 <= l1 || t2 >= b1 || b2 <= t1){
+					return false;
+				}else{
+					return true;
+				}
+
+			}
+
+			window.onload = function(){
+				var oDiv1 = document.getElementById("div1");
+				var oDiv2 = document.getElementById("div2");
+
+				oDiv2.onmousedown = function(ev){
+					var e = ev || window.event;
+					var offsetX = e.clientX - oDiv2.offsetLeft;
+					var offsetY = e.clientY - oDiv2.offsetTop;
+
+					document.onmousemove = function(ev){
+						var e = ev || window.event;
+						oDiv2.style.left = e.clientX - offsetX + 'px';
+						oDiv2.style.top = e.clientY - offsetY + 'px';
+
+						//判断两者是否发生碰撞
+						if(konck(oDiv2, oDiv1)){
+							oDiv2.style.backgroundColor = 'orange';
+						}else{
+							oDiv2.style.backgroundColor = 'red';
+						}
+					}
+				}
+
+				document.onmouseup = function(){
+					document.onmousemove = null
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div id = 'div1'></div>
+		<div id = 'div2'></div>
+	</body>
+</html>
+
+
+
+
+

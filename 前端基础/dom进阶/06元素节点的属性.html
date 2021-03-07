@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>Document</title>
+        <script>
+
+            /*
+                childNodes   访问当前节点下所有的子节点
+                firstChild   访问子节点中的首位
+                lastChild    访问子节点中的最后一位
+                nextSibling  访问当前节点兄弟节点中的下一个节点
+                previousSibling  访问当前节点兄弟节点中的上一个节点
+
+                【注】上述这些属性都包含文本节点
+
+
+                【注】下述这些方法只获取子节点中的元素节点。(IE8以下不兼容)
+
+                children
+                firstElementChild
+                lastElementChild
+                nextElementtSibling
+                previousElementSibling
+
+                nodeType     nodeName    nodeValue
+        元素节点     1          标签名         null
+        属性节点     2          属性名       属性值
+        文本节点     3          #text       文本内容
+
+
+                空格、回车、换行 看不见，是字符。
+
+                【注】获取当前节点的父节点通过parentNode获取。
+
+
+                【注】获取当前整个页面的根节点  document
+
+            */
+            window.onload = function(){
+                var oDiv = document.querySelector('#div1');
+
+                //alert(oDiv.tagName);
+                //alert(oDiv.nodeName);
+               /*  alert(oDiv.childNodes.length);
+                for(var i = 0; i < oDiv.childNodes.length; i++){
+                    alert(oDiv.childNodes[i].nodeType);
+                } */
+
+
+                /*
+                    将纯空白的文本节点剔除
+                */
+                console.log(oDiv.parentNode);
+               //alert(oDiv.firstElementChild.nodeName);
+               //alert(oDiv.lastElementChild.nodeName);
+
+                //alert(oDiv.firstElementChild.nextSibling.nodeValue);
+
+                //  alert(oDiv.firstElementChild.nextElementSibling.nodeName);
+
+
+                 //alert(oDiv.parentNode.tagName);
+
+
+                //true
+                //alert(oDiv.ownerDocument === document);
+
+            }
+        </script>
+    </head>
+    <body>
+        <div id = 'div1'>
+            <em>em文本</em>
+            div文本
+            <strong>strong文本</strong>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<style>
+			#div1{background: url(star.png) no-repeat; width: 500px; height: 100px;  position: absolute;  left: 100px; top: 100px}
+			#div2{background: url(star1.png) no-repeat; width: 500px; height: 100px; position: absolute; left: 0px; top: 0px}
+		</style>
+		<script>
+			window.onload = function(){
+				var oDiv1 = document.getElementById("div1");
+				var oScore = document.getElementById("score");
+				document.onmousedown = function(ev){
+					var e = ev || window.event;
+					var w = e.clientX - oDiv1.offsetLeft;
+					if(w <= 0){
+						w = 0;
+					}
+					if(w >= 500){
+						w = 500;
+					}
+					oDiv1.style.width = w + 'px';
+					oScore.innerHTML = parseInt(w / 500 * 100) + "%";
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<span id = 'score'>100%</span>
+		<div id = 'div1'>
+			<div id = 'div2'></div>
+		</div>
+	</body>
+</html>

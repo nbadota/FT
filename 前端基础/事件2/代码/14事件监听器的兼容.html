@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>Document</title>
+        <script>
+            /* 
+                attachEvent()和 detachEvent()
+             */
+             function addEvent(node, evenType, funcName){
+                 if(node.addEventListener){
+                     node.addEventListener(evenType, funcName, false);
+                 }else{
+                     node.attachEvent("on" + evenType, funcName);
+                 }
+             }
+
+             function removeEvent(node, eventType, funcName){
+                 if(node.removeEventListener){
+                     node.removeEventListener(eventType, funcName);
+                 }else{
+                     node.detachEvent("on" + eventType, funcName);
+                 }
+             }
+        </script>
+    </head>
+    <body>
+        
+    </body>
+</html>

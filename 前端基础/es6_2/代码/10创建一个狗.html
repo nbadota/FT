@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>Document</title>
+        <script>
+            function Dog({name, type, age}){
+                //this = new Object();
+                //添加属性
+                this.name = name;
+                this.type = type;
+                this.age = age;
+            }
+            /* 
+                通过构造函数的原型添加方法
+             */
+             Dog.prototype = {
+                 run: function(){
+                     alert(this.name + "会飞快的奔跑");
+                 },
+                 showSelf: function(){
+                     alert(`这是一个${this.type}的，${this.age}岁的，叫${this.name}的小狗`);
+                 }
+             }
+
+             /* 
+                构造函数构造出来的对象，有一个属性__proto__，指向构造出这个对象的构造函数的原型。
+
+
+                 instanceof  关键字
+                 功能：判断某一个对象是否是这个构造函数构造出来的。
+              */
+            
+             var xiaobai = new Dog({
+                 name: "小白",
+                 type: "比熊",
+                 age: 3
+             });
+            //  alert(xiaobai instanceof Dog);
+            alert(xiaobai instanceof Object);
+            /*  xiaobai.run();
+             xiaobai.showSelf(); */
+            //  alert(xiaobai.__proto__ == Dog.prototype);
+
+             var xiaohei = new Dog({
+                 name: "小黑",
+                 type: "拉布拉多",
+                 age: 5
+             })
+            /*  xiaohei.run();
+             xiaohei.showSelf(); */
+            /*  alert(xiaohei.__proto__ == Dog.prototype);
+
+             alert(xiaobai.__proto__ == xiaohei.__proto__); */
+
+
+        </script>
+    </head>
+    <body>
+        
+    </body>
+</html>

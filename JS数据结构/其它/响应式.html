@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <mate name='viewport' content='width=device-width;initial-scale=1.0;maximum-scale=1;user-scalable=no'>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>响应式布局</title>
+    <style type="text/css">
+        @media only screen and (max-width: 374px) {
+            /* iphone5 或者更小的尺寸，以 iphone5 的宽度（320px）比例设置 font-size */
+            html {
+                font-size: 86px;
+            }
+        }
+        @media only screen and (min-width: 375px) and (max-width: 413px) {
+            /* iphone6/7/8 和 iphone x */
+            html {
+                font-size: 100px;
+            }
+        }
+        @media only screen and (min-width: 414px) {
+            /* iphone6p 或者更大的尺寸，以 iphone6p 的宽度（414px）比例设置 font-size */
+            html {
+                font-size: 110px;
+            }
+        }
+
+        body {
+            font-size: 0.16rem;
+        }
+        #div1 {
+            width: 1rem;
+            background-color: #ccc;
+        }
+
+
+    </style>
+    <script>
+        //前端响应式1,js计算rem
+        const setHtmlFontSize = () => {
+            let deviceWidth =
+                document.documentElement.clientWidth || document.body.clientWidth
+            if (deviceWidth >= 750) {
+                deviceWidth = 750
+            }
+            if (deviceWidth <= 320) {
+                deviceWidth = 320
+            }
+            document.documentElement.style.fontSize = `${deviceWidth / 7.5}px`
+        }
+        window.onresize = setHtmlFontSize
+        setHtmlFontSize()
+        //前端响应式2,vw与vh
+    /*
+    vw:把屏幕分为100份,屏幕宽等于100vw,如iPhone 375px 1vw -> 3.75px
+    100px = 26.6667vw
+    1.html{ font-size:26.66667vw }
+    2.$vw_base: 750;
+    @function vw($px) {
+        @return ($px / 750) * 100vw;
+    }
+     */
+    </script>
+</head>
+<body>
+<div id="div1">
+    this is div
+</div>
+</body>
+</html>

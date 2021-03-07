@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<style>
+			*{margin: 0px; padding: 0px}
+			#ul1 li{list-style: none; width: 200px; height: 200px; float: left; margin: 10px}
+			#ul1 li img{width: 100%; height: 100%}
+			#ul1{position: absolute; left: 0px}
+			#div1{width: 880px; height: 220px; border: 1px solid black; margin: 100px auto; position: relative; overflow: hidden;}
+		</style>
+		<script>
+			window.onload = function(){
+				var oDiv = document.getElementById("div1");
+				var oUl = document.getElementById("ul1");
+				var aLis = oUl.getElementsByTagName("li");
+
+				//将oul中所有的li标签重新插入一份
+				oUl.innerHTML += oUl.innerHTML;
+				//重新计算oul的宽
+				oUl.style.width = aLis.length * 220 + 'px';
+			
+
+				setInterval(function(){
+					oUl.style.left  = oUl.offsetLeft - 5 + 'px';
+
+					if(oUl.offsetLeft <= -oUl.offsetWidth / 2){
+
+						//重新开始向左走
+						oUl.style.left = 0;
+					}
+				}, 30);
+
+			}
+		</script>
+	</head>
+	<body>
+		<div id = 'div1'>
+			<ul id = 'ul1'>
+				<li>
+					<img src="img/1.jpg" alt="">
+				</li>
+				<li>
+					<img src="img/2.jpg" alt="">
+				</li>
+				<li>
+					<img src="img/3.jpg" alt="">
+				</li>
+				<li>
+					<img src="img/4.jpg" alt="">
+				</li>
+			</ul>
+		</div>
+	</body>
+</html>

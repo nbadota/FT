@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>Document</title>
+        <style>
+            #div1{width: 100px; height: 100px; background-color: red}
+        </style>
+        
+        <script>
+            window.onload = function(){
+                var oDiv1 = document.getElementById("div1");
+                /* 
+                    宽高透明度同时发生变化
+                 */
+                oDiv1.onmouseover = function(){
+                    startMove(this, {
+                        width: 300,
+                        height: 102,
+                        opacity: 30
+                    }, function(){
+                        alert("动画结束了");
+                    });
+                    
+                }
+
+                oDiv1.onmouseout = function(){
+                    startMove(this, {
+                        width: 100,
+                        height: 100,
+                        opacity: 100
+                    });
+                }
+            }
+            /* 
+                回调函数：我们把函数当做参数传入，并且在合适调用的方式，叫做回调函数。在别的编程语言(C语言、C++)叫做函数指针。
+
+                问题：其中有一个动画到达目的值，就把定时器关闭掉了。
+                解决：当所有的动画到达目的值，才能关闭定时器
+            */
+            
+            function startMove(node, cssObj, complete){//complete = show;
+                clearInterval(node.timer);
+                node.timer = setInterval(function(){
+                    var isEnd = true; //假设所有的动画都到达目的值。
+                    for(var attr in cssObj){
+                        var iTarget = cssObj[attr];
+                        //计算速度
+                        var iCur = null;
+                        if(attr == "opacity"){
+                            iCur = parseInt(parseFloat(getStyle(node, "opacity")) * 100);
+                        }else{
+                            iCur = parseInt(getStyle(node, attr))
+                        }
+                        
+                        var speed = (iTarget - iCur) / 8;
+                        speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+
+                        
+                        if(attr == "opacity"){
+                            iCur += speed;
+                            node.style.opacity = iCur / 100;
+                            node.style.filter = "alpha(opacity=" + iCur +  ")";
+                        }else{
+                            node.style[attr] = iCur + speed + 'px';
+                        }  
+
+                        if(iCur != iTarget){
+                            isEnd = false;
+                        }
+                    }
+
+                    if(isEnd){
+                        clearInterval(node.timer);
+                        if(complete){
+                            complete.call(node);
+                        }
+                    }
+                }, 30);
+            }
+
+            //获取当前有效样式浏览器兼容的写法
+            function getStyle(node, cssStr){
+                return node.currentStyle ? node.currentStyle[cssStr] : getComputedStyle(node)[cssStr];
+            }
+        </script>
+    </head>
+    <body>
+        <div id = 'div1'></div>
+    </body>
+</html>
