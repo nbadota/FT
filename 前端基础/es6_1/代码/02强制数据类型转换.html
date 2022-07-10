@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>Document</title>
+        <script>
+            /* function show(x, y){
+                alert(this);
+                alert(x + ", " + y);
+            } */
+
+            // show(10, 20);
+
+
+            /* 
+                call
+                    格式：函数名.call();
+                    参数：
+                        第一个参数：传入该函数this指向的对象，传入什么强制指向什么
+                        第二个参数开始：将原函数的参数往后顺延一位。
+             */
+
+            //  show.call("call", 20, 40);
+
+            /* 
+                apply
+                    格式：函数名.apply()
+                    参数：  
+                        第一个参数：传入该函数this指向的对象，传入什么强制指向什么
+                        第二个参数：数组  数组，放入我们原有所有的参数
+             */
+            //  show.apply("apply", [20, 40]);
+
+
+
+            /* 
+                bind   预设this指向
+             */
+            /* function show(x, y){
+                alert(this);
+                alert(x + ", " + y);
+            }
+            var res = show.bind("bind");
+            
+            // res(40, 50);
+            show.bind("bind")(40, 50); */
+
+
+            function show(){
+                alert(this);
+            }
+
+            window.onload = function(){
+                var oBtn = document.getElementById("btn1");
+                /* oBtn.onclick = function(){
+                    show.call("call");
+                } */
+
+                /* oBtn.onclick = function(){
+                    show.apply("apply");
+                } */
+               
+
+                // oBtn.onclick = res;
+            }
+
+
+            /* 
+                apply方法使用的小技巧
+             */
+            //  Math.min();  //传入所有参数中的最小值
+            //  Math.max();  //传入所有参数中的最大值
+
+           /*  alert(Math.min(10, 20, 30, 40, 50));
+            alert(Math.max(10, 20, 30, 40, 50)) */
+
+            var arr = [10, 20, 30, 40, 50];
+            alert(Math.min.apply(null, arr));
+            alert(Math.max.apply(null, arr));
+        </script>
+    </head>
+    <body>
+        <button id = 'btn1'>按钮</button>
+    </body>
+</html>

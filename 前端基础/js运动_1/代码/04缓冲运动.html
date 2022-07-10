@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>Document</title>
+        <style>
+             #div1{width: 100px; height: 100px; background-color: red; position: absolute;}
+             #span1{width: 1px; height: 500px; background-color: black; position: absolute; left: 500px;}
+            *{margin: 0px; padding: 0px}
+        </style>
+        <script>
+            /* 
+                缓冲运动
+
+                var speed = 距离;
+                var speed = (iTarget - iCur) / 8;
+
+
+
+                速度：0.375   计算机最小能够识别的像素是一像素。
+            */
+            window.onload = function(){
+                var oBtn = document.getElementById("btn1");
+                var oDiv = document.getElementById("div1");
+
+                oBtn.onclick = function(){
+                    startMove(500);
+                }
+
+                var timer = null;
+                function startMove(iTarget){
+                    var oDiv = document.getElementById("div1");
+                    var oTxt1 = document.getElementById("txt1");
+
+                    clearInterval(timer);
+                    timer = setInterval(function(){
+                         //计算速度
+                        var speed = (iTarget - oDiv.offsetLeft) / 8;
+                        speed = Math.ceil(speed);
+
+                        if(oDiv.offsetLeft == iTarget){
+                            clearInterval(timer);
+                        }else{
+                            oDiv.style.left = oDiv.offsetLeft + speed + 'px';
+                            txt1.value += oDiv.offsetLeft + ", " + speed + "\n";
+                        }
+                    }, 30);
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <button id = 'btn1'>开始运动</button>
+        <div id = 'div1'></div>
+        <span id = 'span1'></span>
+        <textarea name="" id="txt1" cols="30" rows="10"></textarea>
+    </body>
+</html>

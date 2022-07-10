@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "module": "es2015",
+    "target": "es6",
+    //"sourceMap": true
+    //"strict": true,                           /* Enable all strict type-checking options. */
+    "noImplicitAny": true,                 /* Raise error on expressions and declarations with an implied 'any' type. */
+    //"strictNullChecks": true,              /* Enable strict null checks. */
+    "strictFunctionTypes": true,           /* Enable strict checking of function types. */
+    "strictBindCallApply": true,           /* Enable strict 'bind', 'call', and 'apply' methods on functions. */
+    //"strictPropertyInitialization": true,  /* Enable strict checking of property initialization in classes. */
+    "noImplicitThis": true             /* Raise error on 'this' expressions with an implied 'any' type. */
+  },
+  "exclude": [
+    "node_modules"
+  ]
+}

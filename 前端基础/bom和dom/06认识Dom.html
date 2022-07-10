@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>Document</title>
+        <style>
+            .box{height: 300px;}
+        </style>
+        <script>
+            /* 
+                DOM： document object model(文档对象模型)
+                    节点类型：
+                        元素节点  <div></div>
+                        属性节点  id = 'div1'
+                        文本节点  div文本
+
+
+                元素节点的获取
+                    document.getElementById(id)
+                    功能：通过id获取符合条件的元素，（id必须是唯一的）
+                    返回值：就是符合条件的一个节点。
+             */
+            window.onload = function(){
+                //写在这里的代码，是整个页面加载完成以后执行
+                var oDiv = document.getElementById("div1");
+                // alert(oDiv);
+
+                /* 
+                    获取行间属性的值
+                 */
+                /* alert(oDiv.id);
+                alert(oDiv.title);
+
+                //访问class  通过className访问
+                alert(oDiv.className); */
+
+                //设置行间属性的值
+                /* oDiv.id = "div2";
+                oDiv.title = 'world';
+                oDiv.className = 'box4'; */
+
+
+                /* 
+                    【注】只能访问标签行间的css样式。
+                 */
+                alert(oDiv.style.width);
+                alert(oDiv.style.height);
+                /* 
+                    【注】如果css样式带-，将-去掉，从第二个单词开始首字母大写
+                 */
+                // alert(oDiv.style.backgroundColor);
+
+                oDiv.style.backgroundColor = 'blue';
+
+            }
+        </script>
+    </head>
+    <body>
+        <div id = 'div1' title = 'hello' class = 'box' style = 'width: 300px;  background-color: red'>div文本</div>
+    </body>
+    <!-- <script>
+        alert(1);
+    </script> -->
+</html>

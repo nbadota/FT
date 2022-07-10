@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>Document</title>
+    </head>
+    <body>
+        <!-- 
+            action   点击submit以后跳转到的url
+            method   表单的提交数据的方式
+                 get(默认)
+                    http://localhost/code14/1.get.php?username=xxxx&age=18&password=123abc
+                提交方式：是直接将数据拼接在url后面进行提交，通过?进行拼接，查询字符串
+                    好处： 简单
+                    缺点：
+                        1、不安全
+                        2、最大2kb
+                        3、没法实现上传
+
+                 post
+
+         -->
+        <form action="1.get.php" method = "get">
+            <input type="text" name = 'username' placeholder="用户名"/>
+            <input type="text" name = 'age' placeholder="年龄"/>
+            <input type="text" name = 'password' placeholder="密码"/>
+            <input type="submit"/>
+        </form>
+    </body>
+</html>

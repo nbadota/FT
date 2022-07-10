@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>Document</title>
+        <script>
+            /* 
+                map映射
+            */
+           let map = new Map();
+
+           //添加数据
+           map.set("张三", "打渔的");
+           map.set("李四", "种地的");
+           map.set("王五", "挖煤的");
+           map.set("李四", "打猎的");
+
+        //    console.log(map);
+
+          /* 
+            取值
+          */
+        //  alert(map.get("王五"));
+
+          /* 
+            map遍历  通过for of
+          */
+            for(let [key,value] of map){ 
+                console.log(key,value);
+            }
+           
+
+        </script>
+    </head>
+    <body>
+        
+    </body>
+</html>

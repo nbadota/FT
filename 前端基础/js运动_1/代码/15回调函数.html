@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>Document</title>
+        <script>
+            /* 
+                KFC  点餐系统
+            */
+
+            function KFC(food, eatFunc){
+                alert("您的餐" + food + "准备好了，请您及时就餐");
+                eatFunc();
+            }
+
+           /*  function xiaohua(){
+                alert("打包带走");
+            }
+            KFC("老北京鸡肉卷", xiaohua);
+ */
+
+            /* function xiaoming(){
+                alert("堂食");
+            } */
+
+            /* var xiaoming = function(){
+                alert("堂食");
+            } */
+            KFC("香辣鸡腿堡", function(){
+                alert("堂食");
+            });
+
+
+            /* 
+                1、认识运动（运动框架）
+                    <1>每次启动定时器，将上一次定时器关闭
+                    <2>运动和停止 if...else
+                2、分享到菜单和淡入淡出
+                    startMove(iTarget);
+                3、缓冲运动
+                    var speed = (iTarget - iCur) / 8;
+                    speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+                4、多物体运动
+                        node.timer;
+                   多物体淡入淡出：任何一个变量都不能公用
+                    startMove(node, iTarget);
+                5、多物体多样式运动
+                        offset系列  透明度
+                    startMove(node, attr, iTarget);
+                6、链式运动
+                    startMove(node, attr, iTarget, complete)
+                7、完美运动
+                    startMove(node, cssObject, complete);
+            */
+        </script>
+    </head>
+    <body>
+        
+    </body>
+</html>

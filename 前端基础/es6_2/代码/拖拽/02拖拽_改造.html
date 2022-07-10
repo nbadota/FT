@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>Document</title>
+        <style>
+            #div1{width: 200px; height: 200px; background-color: red; position: absolute}
+        </style>
+        <script>
+            /* 
+                改造
+                    1、不能有函数嵌套
+                    2、可以有全局变量
+             */
+            var oDiv = null;
+            var offsetX = 0;
+            var offsetY = 0;
+            window.onload = function(){
+                oDiv = document.getElementById("div1");
+                oDiv.onmousedown = funcDown;
+                document.onmouseup = funcUp;
+            }
+
+            function funcDown(ev){
+                var e = ev || window.event;
+                // alert(e.offsetX + ", " + e.offsetY);
+                offsetX = e.clientX - oDiv.offsetLeft;
+                offsetY = e.clientY - oDiv.offsetTop;
+
+                document.onmousemove = funcMove;
+            }
+
+            function funcMove(ev){
+                var e = ev || window.event;
+                oDiv.style.left = e.clientX - offsetX + 'px';
+                oDiv.style.top = e.clientY - offsetY + 'px';
+            }
+            function funcUp(){
+                document.onmousemove = null;
+            }
+        </script>
+    </head>
+    <body>
+        <div id = 'div1'></div>
+    </body>
+</html>

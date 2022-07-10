@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>Document</title>
+        <script>
+            /* 
+                延迟对应毫秒数以后，有且仅执行一次
+            */
+            var timer = setTimeout(function(){
+                alert("hello world");
+            }, 4000);
+
+            window.onload = function(){
+                var oBtn = document.getElementById("btn1");
+                oBtn.onclick = function(){
+                    clearTimeout(timer);
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <button id = 'btn1'>取消延时器</button>
+    </body>
+</html>

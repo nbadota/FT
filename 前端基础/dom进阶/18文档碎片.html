@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>Document</title>
+        <script>
+            /*
+                创建10W个节点，添加到页面上
+            */
+            window.onload = function(){
+                console.time("test1");
+                //test1：120 毫秒 - 倒计时结束
+                for(var i = 0; i < 100000; i++){
+                    var newDiv = document.createElement("div");
+                    document.body.appendChild(newDiv);
+                }
+
+                console.timeEnd("test1");
+
+
+                /*
+                    先创建好10W个节点，将10W节点查入到一个节点上，最后将这1个节点添加到页面上
+                */
+
+                //test2：78 毫秒 - 倒计时结束   文档碎片
+                console.time("test2");
+                var node = document.createElement("div");
+                for(var i = 0; i < 100000; i++){
+                    var newDiv = document.createElement("div");
+                    node.appendChild(newDiv);
+                }
+                document.body.appendChild(node);
+                console.timeEnd("test2");
+
+                /*
+                // 创建一个文档片段，此时还没有插入到 DOM 结构中
+                const list = document.getElementById('list')
+                const frag = document.createDocumentFragment()
+                document.createDocumentFragment
+
+                for (let i  = 0; i < 20; i++) {
+                    const li = document.createElement('li')
+                    li.innerHTML = `List item ${i}`
+
+                    // 先插入文档片段中
+                    frag.appendChild(li)
+                }
+
+                // 都完成之后，再统一插入到 DOM 结构中
+                list.appendChild(frag)
+                 */
+            }
+        </script>
+    </head>
+    <body>
+
+    </body>
+</html>

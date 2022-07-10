@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>Document</title>
+        <script>
+            /*
+                事件类型的种类：
+                    一、鼠标事件（可以绑定在任意的元素节点上）
+                        click      单击
+                        dblclick   双击
+                        mouseover  鼠标移入
+                        mouseout   鼠标移出
+                        mousemove  鼠标移动（会不停的触发）
+                        mousedown  鼠标按下
+                        mouseup    鼠标抬起
+                        mouseenter 鼠标移入
+                        mouseleave 鼠标移出
+
+                    二、键盘事件（表单元素，全局window）
+                        keydown    键盘按下（如果按下不放手，会一直触发）
+                        keyup      键盘抬起
+
+                        keypress   键盘按下（只支持字符键）
+
+                    三、HTML事件
+                        1、window事件
+                            load    当页面加载完成以后会触发
+                            unload  当页面解构的时候触发(刷新页面，关闭当前页面)  IE浏览器兼容
+                            scroll  页面滚动
+                            resize  窗口大小发生变化的时候触发
+
+                        2、表单事件
+                            blur   失去焦点
+                            blur
+                            focus  获取焦点
+                            focus
+                            select 当我们在输入框内选中文本的时候触发
+                            select
+                            change 当我们对输入框的文本进行修改并且失去焦点的时候
+                            change
+                        【注】必须添加在form元素上
+                            submit 当我们点击submit上的按钮才能触发
+                            reset  当我们点击reset上的按钮才能触发
+             */
+             window.onload = function(){
+                var oInput1 = document.getElementById("input1");
+                /*
+                oInput1.onblur = function(){
+                    this.value = "失去焦点";
+                }
+
+                oInput1.onfocus = function(){
+                    this.value = "获取焦点";
+                }
+                */
+                 oInput1.onselect = function(){
+                    alert("被选中了");
+                }
+
+               /*  oInput1.onchange = function(){
+                    alert("被修改了");
+                } */
+
+                /*
+                var oF1 = document.getElementById("f1");
+                oF1.onsubmit = function(){
+                    alert("提交");
+                }
+
+                oF1.onreset = function(){
+                    alert("重置");
+                }
+
+                 */
+             }
+
+
+        </script>
+    </head>
+    <body style = 'height: 3000px'>
+    <input value = '默认文本' id = 'input1' type = 'text'/>
+        <form id = 'f1'>
+            <input type="text" />
+            <input type="submit"/>
+            <input type="reset"/>
+        </form>
+    </body>
+</html>

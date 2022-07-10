@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>Document</title>
+        <script>
+            window.onload = function(){
+                var oBtn = document.getElementById("btn1");
+                oBtn.onclick = function(){
+
+                    //1、创建ajax对象
+                    var xhr = null;
+                    try{
+                        xhr = new XMLHttpRequest();
+                    }catch(error){
+                        xhr = new ActiveXObject("Microsoft.XMLHTTP");
+                    }
+
+                    //2、调用open
+                    
+                    xhr.open("get", "1.get.php?username=yyy&age=19&password=123abc", true);
+
+                    //3、调用send
+                    xhr.send();
+                    
+
+                    //4、等待数据响应
+                   
+                    xhr.onreadystatechange = function(){
+                        if(xhr.readyState == 4){
+                            //判断本次下载的状态码都是多少
+                            if(xhr.status == 200){
+                                alert(xhr.responseText);
+                            }else{
+                                alert("Error:" + xhr.status);
+                            }
+                        }
+                    }
+
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <button id = 'btn1'>GET请求</button>
+    </body>
+</html>

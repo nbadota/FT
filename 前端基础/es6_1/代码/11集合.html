@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>Document</title>
+        <script>
+            /* 
+                集合：
+                    1、不重复
+                    2、无序
+            
+                Set
+                Map
+            */
+
+            let imgs = new Set();
+            //添加元素
+           /*  imgs.add(100);
+            imgs.add(100);
+            imgs.add("hello");
+            imgs.add("hello");
+            imgs.add(true);
+            imgs.add(new String("world"));
+            imgs.add(new String("world")); */
+
+            // console.log(imgs);
+
+            /* 
+                集合遍历
+                for...of 遍历集合
+            */
+           /* for(let item of imgs.keys()){
+               console.log(item);
+           } */
+
+          /*  for(let item of imgs.values()){
+               console.log(item);
+           } */
+
+        //    imgs.entries
+            /* for(let item of imgs.entries()){
+               console.log(item);
+            } */
+
+
+
+            /* //数组变集合
+            var set = new Set([10, 20, 30, 40, 50, 40, 30, 20, 10]);
+            // console.log(set);
+
+            //集合变数组  将数据结构展开成数组
+            var arr = [...set];
+            alert(arr); */
+
+            var arr = [10, 20, 30, 40, 50, 40, 30, 20, 10];
+            arr = [...new Set(arr)];
+            alert(arr);
+            
+        </script>
+    </head>
+    <body>
+        
+    </body>
+</html>

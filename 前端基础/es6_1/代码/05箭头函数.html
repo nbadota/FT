@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>Document</title>
+        <script>
+            /* 
+                箭头函数：新潮的函数写法。
+                【注】适当的省略函数中的function和return关键字。
+             */
+
+            /*  function add(x){
+                 return x + 10;
+             } */
+
+            /*  var add = x => x + 10;
+             alert(add(5)); */
+
+
+             /* 
+                各种形式的箭头函数
+              */
+
+              //1、无参数，无返回值
+             function show(){
+                 alert("hello world");
+             }
+
+             var show = () => {
+                 alert("hello world");
+             }
+
+             //2、有一个参数，无返回值
+
+             function xxx(num){
+                 alert(num);
+             }
+             var xxx = num => {
+                 alert(num);
+             }
+
+
+             //3、有一个参数，有返回值
+             function add(x){
+                 return x + 10;
+             }
+
+             var add = x => {
+                 //代码
+                 return x + 10;
+             };
+
+             //4、多个参数，有返回值
+             function show(x, y){
+                 alert(x + y);
+             }
+
+             var show = (x, y) => {
+                 alert(x + y);
+             }
+        </script>
+    </head>
+    <body>
+        
+    </body>
+</html>

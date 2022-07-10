@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>Document</title>
+        <script>
+            /* 
+                绑定事件
+                    1、内联模式
+                    2、外联模式/脚本模式(最多)
+
+                绑定事件格式：
+                    元素节点.on + 事件类型 = 匿名函数。
+
+                    click   事件类型
+                    onclick 事件处理的函数
+             */
+            function btnClick(){
+                alert("内联模式")
+            }
+
+            window.onload = function(){
+                var oBtn = document.getElementById("btn1");
+                oBtn.onclick = function(){
+                    alert("外联模式");
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <button onclick = 'btnClick();'>内联模式</button>
+        <button id = 'btn1'>外联模式</button>
+    </body>
+</html>

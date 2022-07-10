@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>Document</title>
+        <script>
+            /*
+                document.getElementById(id);
+
+                node.getElementsByTagName(标签名);
+                功能：从node节点开始，通过标签名获取符合条件的元素节点。
+                返回值：伪数组/类数组
+
+                node.getElementsByClassName(class名字)   （IE8以下不兼容）
+                功能：通过class名字获取符合条件的元素节点。
+
+                document.getElementsByName(name属性的值);
+                功能：通过name属性的值获取符合条件的元素节点。
+                【注】一般使用在表单元素里。
+             */
+
+            window.onload = function(){
+                // var aLis = document.getElementsByTagName("li");
+                // alert(aLis);  使用起来和数组类似,一般情况，把这种叫做伪数组/类数组（自己起）。
+                let alis = document.getElementsByTagName("li")
+                console.log(alis)
+
+
+               /*  var oOl = document.getElementById("ol1");
+                var aLis = oOl.getElementsByTagName("li");
+                //获取ol下的li节点
+                alert(aLis.length);
+                for(var i = 0; i < aLis.length; i++){
+                    aLis[i].style.backgroundColor = 'red';
+                } */
+                let oOl = document.getElementById("ol1")
+                let aLis = oOl.getElementsByTagName("li")
+                console.log(alis.length)
+
+
+                // var nodes = document.getElementsByClassName("box");
+                /* var oUl = document.getElementById("ul1");
+                var nodes = oUl.getElementsByClassName("box");
+                alert(nodes.length);
+
+                for(var i = 0; i < nodes.length; i++){
+                    nodes[i].style.backgroundColor = 'red';
+                } */
+                let oUl = document.getElementById("ul1")
+                let nds = oUl.getElementsByClassName("box")
+                console.log(nds.length)
+
+
+                var nodes = document.getElementsByName("hello");
+                alert(nodes.length);
+
+                for(var i = 0; i < nodes.length; i++){
+                    nodes[i].style.backgroundColor = 'red';
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <ul id = 'ul1'>
+            <li>111</li>
+            <li class = 'box'>111</li>
+            <li>111</li>
+            <li>111</li>
+            <li class = 'box'>111</li>
+            <li name = 'hello'>111</li>
+            <div class = 'box' name = 'hello'>div</div>
+        </ul>
+        <input type="text" name = 'hello'/>
+        <span name = 'hello'>span</span>
+        <ol id = 'ol1'>
+            <li>222</li>
+            <li class = 'box'>222</li>
+            <li class = 'box'>222</li>
+            <li>222</li>
+        </ol>
+    </body>
+</html>

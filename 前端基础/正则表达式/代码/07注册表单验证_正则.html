@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>Document</title>
+        <style>
+            #div1{width: 250px; 
+                height: 250px; 
+                border: 1px solid black; 
+                padding: 50px; 
+                text-align: center; 
+                margin: 100px auto;
+                background-color:lightgray}
+            #div1 input{width: 250px; height: 30px; font-size: 18px; margin-top: 20px}
+            #div1 span{margin-top: 5px; font-size: 14px; color: gray}
+            #div1 .testCode{width: 70px; height: 30px; line-height: 30px; 
+                     background-color: gray; color: white; float: left;
+                     margin-left: 12px; margin-top: 10px
+            }
+        </style>
+        <script>
+           window.onload = function(){
+               var oUsername = document.getElementById("username");
+               var oUsername_span = document.getElementById("username_span");
+               var oPassword = document.getElementById("password");
+               var oDiv1 = document.getElementById("div1");
+               var aDivs = oDiv1.getElementsByClassName("testCode");
+
+               //添加失去焦点事件
+               oUsername.onblur = function(){
+                   var oValue = oUsername.value;
+                   //1、用户名长度是否符合要求
+                   if(oValue.length < 6 || oValue.length > 18){
+                       oUsername_span.innerHTML = '❗️长度应为6~18个字符';
+                       oUsername_span.style.color = 'red';
+
+                       //判断首字母是否是字母
+                   }else if(!/[a-zA-Z]/.test(oValue[0])){
+                        oUsername_span.innerHTML = '❗️邮件地址必需以英文字母开头';
+                        oUsername_span.style.color = 'red';
+                   }else if(/\W/.test(oValue)){
+                        oUsername_span.innerHTML = '❗️邮件地址需由字母、数字或下划线组成 ';
+                        oUsername_span.style.color = 'red';
+                   }else{
+                        oUsername_span.innerHTML = "✅该用户名可注册";
+                        oUsername_span.style.color = 'green';
+                   }
+               }
+
+
+               //给密码输入框，添加键盘事件
+               /* 
+                   keydown事件触发的时间是，文本输入之前
+                   keyup
+
+                   密码强度归类：
+                    1、弱  纯数字  纯小写  纯大写
+                    2、中  两两混合
+                    3、强  三种都有
+               */
+               oPassword.onkeyup = function(){
+                   var oValue = this.value;
+                    //每次触发之前，都要将上一次样式全部清空
+                    for(var i = 0; i < aDivs.length; i++){
+                        aDivs[i].style.backgroundColor = 'gray';
+                    }
+
+                   if(oValue.length >= 6){
+                       
+                       //开始密码强度验证
+                        if(/^\d+$/.test(oValue) || /^[a-z]+$/.test(oValue) || /^[A-Z]+$/.test(oValue)){
+                            aDivs[0].style.backgroundColor = 'orange';
+                        }else if(/\d/.test(oValue) && /[a-z]/.test(oValue) && /[A-Z]/.test(oValue)){
+                            aDivs[2].style.backgroundColor = 'orange';
+                        }else{
+                            aDivs[1].style.backgroundColor = 'orange';
+                        }
+                   }
+               }
+           }
+        </script>
+    </head>
+    <body>
+        <div id = 'div1'>
+            <input id = 'username' type="text" placeholder="用户名"/>
+            <span id = 'username_span'>6~18个字符，可使用字母、数字、下划线，需以字母开头</span>
+            <input id = 'password' type="text" placeholder="密码"/>
+            <div class = 'testCode'>弱</div>
+            <div class = 'testCode'>中</div>
+            <div class = 'testCode'>强</div>
+        </div>
+    </body>
+</html>

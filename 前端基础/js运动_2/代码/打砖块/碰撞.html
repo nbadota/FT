@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>Document</title>
+        <style>
+            #div1{width: 100px; height: 100px; background-color: red; position: absolute; left: 100px; top: 200px}
+            #div2{width: 100px; height: 100px; background-color: blue; position: absolute; left: 200px;}
+        </style>
+        <script>
+            window.onload = function(){
+                var oDiv1 = document.getElementById("div1");
+                var oDiv2 = document.getElementById("div2");
+
+                /* 
+                    让蓝色的块可以在当前页面上被拖拽
+                */
+               oDiv2.onmousedown = function(ev){
+                   var e = ev || window.event;
+                   var offsetX = e.clientX - oDiv2.offsetLeft;
+                   var offsetY = e.clientY - oDiv2.offsetTop;
+
+                   document.onmousemove = function(ev){
+                       var e = ev || window.event;
+
+                        //判断
+                        if(konck(oDiv1, oDiv2)){
+                            oDiv1.style.backgroundColor = 'black';
+                        }else{
+                            oDiv1.style.backgroundColor = 'red';
+                        }
+
+                       oDiv2.style.left = e.clientX - offsetX + 'px';
+                       oDiv2.style.top = e.clientY - offsetY + 'px';
+                   }
+               }
+
+               document.onmouseup = function(){
+                   document.onmousemove = null;
+               }
+            }
+            
+            /* 
+                思路：找到如何是绝对碰不上的。
+            */
+
+            function  konck(node1, node2){
+                var l1 = node1.offsetLeft;
+                var r1 = node1.offsetLeft + node1.offsetWidth;
+                var t1 = node1.offsetTop;
+                var b1 = node1.offsetTop + node1.offsetHeight;
+
+                var l2 = node2.offsetLeft;
+                var r2 = node2.offsetLeft + node2.offsetWidth;
+                var t2 = node2.offsetTop;
+                var b2 = node2.offsetTop + node2.offsetHeight;
+
+                if(l2 > r1 || r2 < l1 || t2 > b1 || b2 < t1){
+                    return false;
+                }else{
+                    return true;
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div id = 'div1'></div>
+        <div id = 'div2'></div>
+    </body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>Document</title>
+        <script>
+            /* 
+                小A
+                小B
+
+                对外都是暴露的，
+                我们希望可以进行私有化。
+             */
+            var moduleA = {
+                count: 100,
+                showA: function(){
+                    this.count += 10;
+                    alert(this.count);
+                },
+                showB: function(){
+                    this.count *= 20;
+                    alert(this.count);
+                }
+            };
+
+            var moduleB = {
+                count: 50,
+                showA: function(){
+                    this.count += 100;
+                    alert(this.count);
+                },
+                showB: function(){
+                    this.count /= 20;
+                    alert(this.count);
+                }
+            };
+
+            moduleA.count = "hello";
+            moduleA.showA();
+            moduleA.showB();
+
+            moduleB.showA();
+            moduleB.showB();
+        </script>
+    </head>
+    <body>
+        
+    </body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>Document</title>
+        <script>
+            /* 
+                let 关键字是用来声明变量   更过分，只要遇到大括号就形成作用域
+                    【注】let关键字声明的变量，所在作用域叫做块级作用域。
+
+                var 关键字声明变量  将变量或者形参所在函数的大括号作为作用域处理。
+             */
+
+             /* function show(){
+                 var num = 10;
+                 alert(num);
+             }
+             show();
+             alert(num); */
+
+            /*  if(1){
+                 var num = 10;
+             }
+             alert(num); */
+
+             /* if(1){
+                 let num = 10;
+                 alert(num);
+             }
+             alert(num); */
+
+
+             /* for(var i = 0; i < 5; i++){
+                 setTimeout(function(){
+                     console.log(i);
+                 }, 4000);
+             } */
+
+             /* for(let i = 0; i < 5; i++){
+                 setTimeout(function(){
+                     console.log(i);
+                 }, 4000);
+             } */
+
+            //  alert("循环结束了" + i);
+            
+            window.onload = function(){
+                var aBtns = document.getElementsByTagName("button");
+                for(let i = 0; i < aBtns.length; i++){
+                    aBtns[i].onclick = function(){
+                        alert(i);
+                    }
+                }
+            }
+
+            
+        </script>
+    </head>
+    <body>
+        <button>按钮1</button>
+        <button>按钮2</button>
+        <button>按钮3</button>
+    </body>
+</html>

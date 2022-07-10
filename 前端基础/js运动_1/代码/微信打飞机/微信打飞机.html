@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<style>
+		#airplane{
+			position: absolute;
+			width: 66px;
+			height: 80px;
+			left: 600px;
+			top: 700px
+		}
+		body{
+			background: url(image/background_1.png);
+		}
+		#clip div{
+			width: 6px;
+			height: 14px;
+			background: url(image/bullet1.png);
+			position: absolute;
+			left: 50px;
+			top: 50px;
+		}
+		#enemy div{position: absolute;}
+		</style>
+		<script src = "tool.js"></script>
+		<script>
+		window.onload = function(){
+			drag($("#airplane"));
+
+			Gatlin(4);
+
+			sneer(1);
+
+		}
+
+		/*
+			================================
+			敌机的创建
+
+		*/
+		function sneer(num){
+			setInterval(createEnemy, 1000 / num)
+		}
+		var arr = [{
+			img: "image/enemy2_fly_1.png",
+			width: "110px",
+			height: "164px",
+			HP: 3,
+			beat: "image/大飞机挨打.png",
+		}, {
+			img: "image/enemy3_fly_1.png",
+			width: "46px",
+			height: "60px",
+			HP: 2,
+			beat: "image/中飞机挨打.png"
+		}, {
+			img: "image/enemy1_fly_1.png",
+			width: "34px",
+			height: "24px",
+			HP: 1,
+			beat: ""
+		}]
+
+		function createEnemy(){
+
+			//随机飞机
+			var index = Math.floor(Math.random() * 3);
+
+			//通过飞机的信息创建飞机
+			var oEnemy = document.createElement("div");
+			var oImg = document.createElement("img");
+			oImg.src = arr[index].img;
+			oEnemy.appendChild(oImg);
+			oEnemy.style.width = arr[index].width;
+			oEnemy.style.height = arr[index].height;
+			oEnemy.HP = arr[index].HP;
+			oEnemy.beat = arr[index].beat;
+			$("#enemy").appendChild(oEnemy);
+
+			//设置敌人出现坐标
+			var X = parseInt(Math.random() * (document.documentElement.clientWidth - oEnemy.offsetWidth));
+			var Y = oEnemy.offsetHeight;
+
+			oEnemy.style.left = X + "px";
+			oEnemy.style.top = -Y + "px";
+
+
+			//敌人从上往下掉 
+			var target = document.documentElement.clientHeight - oEnemy.offsetHeight;
+			startMove(oEnemy, target, function(){
+				$("#enemy").removeChild(oEnemy);
+			});
+
+		}
+
+		/*
+			==================================
+			Gatlin
+		*/
+		function Gatlin(num){
+			var aBulltes = $("#clip").getElementsByTagName("div");
+			//给每一颗子弹设置一个布尔值，布尔值是，指示当前子弹是否正在飞
+			for(var i = 0; i < aBulltes.length; i++){
+				//初始状态所有子弹的飞行状态都是false
+				aBulltes[i].isrunning = false;
+			}
+			setInterval(function(){
+				var node = load(aBulltes);
+				if(node){
+					fire($("#airplane"), node);
+				}
+				
+			}, 1000 / num);
+		}
+
+		/*
+			子弹 -> 上膛（找出一颗可以飞的子弹进行发射）
+		*/
+		function load(aBulltes){
+			for(var i = 0; i < aBulltes.length; i++){
+				//找出没有在飞的子弹发射, isrunning = false;
+				if(!aBulltes[i].isrunning){
+					return aBulltes[i];
+				}
+			}
+		}
+
+		function fire(oAirPlane, oBullte){
+			oBullte.isrunning = true;
+			//1、确定枪口的位置
+			var X = oAirPlane.offsetLeft + oAirPlane.offsetWidth / 2 - oBullte.offsetWidth / 2;
+			var Y = oAirPlane.offsetTop - oBullte.offsetHeight - 2;
+			//2、需要将子弹挪动到枪口位置
+			oBullte.style.left = X + "px";
+			oBullte.style.top = Y + "px";
+
+
+			/*
+				当子弹废除屏幕的时候，子弹完成了使命。
+				子弹完成了使命，我们就将子弹拿回来复用。
+			*/
+			startMove(oBullte, -14, function(){
+				oBullte.isrunning = false;
+			});
+		}
+
+		/*
+			1、定时器没有关闭
+			2、他没有到达目的值
+		*/
+
+		// var timer = null;
+		//给每一个子弹配一个单独的定时器
+		function startMove(obj, iTarget, func){
+			clearInterval(obj.timer);
+			obj.timer = setInterval(function(){
+				var speed = 0;
+				if(obj.offsetTop > iTarget){
+					speed = -5;
+				}else{
+					speed = 5;
+				}
+				if(Math.abs(obj.offsetTop - iTarget) < Math.abs(speed)){
+					clearInterval(obj.timer);
+					//挪动到目的值
+					obj.style.top = iTarget + "px";
+
+					if(func){
+						func();
+					}
+				}else{
+					obj.style.top = obj.offsetTop + speed + "px";
+					/*
+						=================================
+						碰撞检测
+					*/
+					//判断当前obj是敌人，判断敌人和我方飞机发生碰撞，将我发飞机爆炸
+					if(obj.parentNode.id == "enemy" && crash(obj, $("#airplane"))){
+
+						$("#airplane").firstElementChild.src = "image/本方飞机爆炸.gif";
+						alert("GAME OVER");
+						location.reload();
+						
+					}
+
+					//判断敌人和子弹是否发生碰撞
+					var aEnemys = $("#enemy").getElementsByTagName("div");
+					for(var i = 0; i < aEnemys.length; i++){
+						if(obj.parentNode.id == "clip" && crash(obj, aEnemys[i])){
+							//敌人消失  子弹消失 子弹应该去复用
+							obj.style.top = -obj.offsetTop + "px";
+							obj.isrunning = false;
+							if(aEnemys[i] && aEnemys[i].HP == 1){
+								$("#enemy").removeChild(aEnemys[i]);
+							}else{
+								aEnemys[i].firstElementChild.src = aEnemys[i].beat;
+								aEnemys[i].HP--;
+							}
+						}
+					}
+
+				}
+			}, 20)
+		}
+		</script>
+	</head>
+	<body>
+		<div id = "airplane">
+			<img src = "image/我的飞机.gif" ondragstart = "return false"/>
+		</div>
+		<div id = "clip">
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+		<div id = "enemy"></div>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

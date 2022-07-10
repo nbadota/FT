@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>Document</title>
+        <style>
+            div{width: 100px; height: 100px; background-color: red; margin: 50px; opacity: 0.3; filter: alpha(opacity=30);}
+        </style>
+        <script>
+            window.onload = function(){
+                var aDivs = document.getElementsByTagName("div");
+                for(var i = 0; i < aDivs.length; i++){
+                    aDivs[i].alpha = 30;
+                    aDivs[i].onmouseover = function(){
+                        startMove(this, 100);
+                    }
+                    aDivs[i].onmouseout = function(){
+                        startMove(this, 30);
+                    }
+                }
+            }
+
+           
+            /* 
+                中间变量:多个物体在进行透明度变化的时候，公用的是一个中间变量。
+
+                结论：任何的变量在多物体运动中，都不能共用。
+            */
+            // var alpha = 30;
+
+            function startMove(node, iTarget){
+               clearInterval(node.timer);
+               node.timer = setInterval(function(){
+                   var speed = (iTarget - node.alpha) / 8;
+                   speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+
+                   if(node.alpha == iTarget){
+                       clearInterval(node.timer);
+                   }else{
+                       node.alpha += speed;
+
+                       node.style.opacity = node.alpha / 100;
+                       node.style.filter = "alpha(opacity=" + node.alpha + ")";
+                   }
+
+               }, 30);
+            }
+        </script>
+    </head>
+    <body>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </body>
+</html>

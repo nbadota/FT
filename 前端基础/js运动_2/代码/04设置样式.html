@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>Document</title>
+        <style>
+            #div1{width: 100px; height: 100px; background-color: red}
+        </style>
+        <script>
+            window.onload = function(){
+                var oDiv1 = document.getElementById("div1");
+                oDiv1.onclick = function(){
+                    setStyle(this, {
+                        width: "300px",
+                        height: "300px",
+                        backgroundColor: 'blue'
+                    })
+                }
+            }
+
+            /* 
+                解决办法：我们将需要传入多个样式，变成一个对象传入就OK
+             */
+
+            //设置css样式  必须去使用这个方法进行修改
+            function setStyle(node, cssObj){
+                for(var attr in cssObj){
+                    //node.style["width"] = "100px";
+                    node.style[attr] = cssObj[attr];
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div id = 'div1'></div>
+    </body>
+</html>

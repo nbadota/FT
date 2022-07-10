@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>Document</title>
+        <style>
+            #div1{width: 200px; height: 200px; background-color: red; }
+        </style>
+        <script>
+            /*
+                事件类型的种类：
+                    一、鼠标事件（可以绑定在任意的元素节点上）
+                        click      单击
+                        click
+                        dblclick   双击
+                        dblclick
+                        mouseover  鼠标移入
+                        mouseover
+                        mouseout   鼠标移出
+                        mouseout
+                        mousemove  鼠标移动（会不停的触发）
+                        mousemove
+                        mousedown  鼠标按下
+                        mousedown
+                        mouseup    鼠标抬起
+                        mouseup
+                        mouseenter 鼠标移入
+                        mouseenter
+                        mouseleave 鼠标移出
+                        mouseleave
+
+                    二、键盘事件
+
+                    三、HTML事件
+                        1、window事件
+                        2、表单事件
+             */
+
+             window.onload = function(){
+                var oBtn = document.getElementById("btn1");
+               /*  oBtn.ondblclick = function(){
+                    alert("双击");
+                } */
+
+                /* oBtn.onmouseover = function(){
+                    this.style.backgroundColor = 'red';
+                }
+
+                oBtn.onmouseout = function(){
+                    this.style.backgroundColor = 'blue';
+                } */
+
+                oBtn.onmousedown = function(){
+                    this.innerHTML = "按下";
+                }
+
+                oBtn.onmouseup = function(){
+                    this.innerHTML = "抬起";
+                }
+
+                var oDiv = document.getElementById("div1");
+                var i = 0;
+                oDiv.onmousemove = function(){
+                    this.innerHTML = i++;
+                }
+             }
+        </script>
+    </head>
+    <body>
+        <button id = 'btn1'>按钮</button>
+        <div id = 'div1'></div>
+    </body>
+</html>

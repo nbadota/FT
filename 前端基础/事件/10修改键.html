@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>Document</title>
+        <script>
+            /* 
+               
+            事件对象的四个修改键：
+
+                shiftKey  如果按下shift键，值就是true，否则是false
+                ctrlKey
+                altKey
+                metakey （windows键  mac电脑下command键）
+             */
+             window.onload = function(){
+                 document.onmousedown = function(ev){
+                    var e = ev || window.event;
+                    var arr = [];
+
+                    if(e.shiftKey){
+                        arr.push("shift");
+                    }
+                    if(e.ctrlKey){
+                        arr.push("ctrl");
+                    }
+                    if(e.altKey){
+                        arr.push('altKey');
+                    }
+                    if(e.metaKey){
+                        arr.push("windows");
+                    }
+
+                    alert(arr);
+                 }
+             }
+        </script>
+    </head>
+    <body>
+        
+    </body>
+</html>

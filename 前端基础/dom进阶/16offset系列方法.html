@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>Document</title>
+        <style>
+            #div1{width: 100px; height: 100px; background-color: red; border: 1px solid black; padding: 8px; margin: 20px}
+        </style>
+        <script>
+            /*
+                offsetWidth
+                offsetHeight
+
+                offsetLeft
+                offsetTop
+             */
+            window.onload = function(){
+                var oDiv = document.getElementById("div1");
+                alert(getComputedStyle(oDiv)["width"]);
+
+                alert(oDiv.offsetWidth); //width + border + padding (眼睛能看到的实际的宽)
+
+            }
+
+            //跨浏览器的兼容
+            function getStyle(node, cssStyle){
+                return node.currentStyle ? node.currentStyle[cssStyle] : getComputedStyle(node)[cssStyle];
+            }
+        </script>
+    </head>
+    <body>
+        <div id = 'div1'></div>
+    </body>
+</html>

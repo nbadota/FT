@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>Document</title>
+        <script>
+            /*
+                1、传统事件绑定
+                    <1>重复添加，覆盖
+                    <2>不能精确的删除事件上的某一个函数
+
+
+                2、事件监听器（低版本IE浏览器下不兼容）
+                        addEventListener()
+                            格式：node.addEventListener("click")
+                            参数：
+                                第一个参数  事件类型
+                                第二个参数  绑定函数
+                                第三个参数  布尔值  true  事件捕获
+                                                 false 事件冒泡  默认
+
+
+                        removeEventListener()
+                            格式：node.removeEventListener
+                            参数：
+                                第一个参数  事件类型
+                                第二个参数  删除函数名字
+             */
+            window.onload = function(){
+                var oBtn = document.getElementById("btn1");
+               /*  oBtn.onclick = function(){
+                    alert("点击1");
+                }
+
+                //100行代码
+
+                oBtn.onclick = function(){
+                    alert("点击2");
+                } */
+                let  div1 = document.getElementsByTagName("div")
+                div1[0].addEventListener("click",function(){
+                    alert("dianji3")
+                })
+
+
+                oBtn.addEventListener("click", function(e){
+                    alert("点击1");
+                    e.stopPropagation()
+                });
+                /*
+                oBtn.addEventListener("click", function(){
+                    alert("点击2");
+                }, false);
+
+                 */
+
+            }
+        </script>
+    </head>
+    <body>
+    <div>
+        <button id = 'btn1'>按钮</button>
+    </div>
+    </body>
+</html>

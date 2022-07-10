@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>Document</title>
+        <script>
+            function Dog({name, type, age}){
+                //this = new Object();
+                //添加属性
+                this.name = name;
+                this.type = type;
+                this.age = age;
+            }
+            /* 
+                通过构造函数的原型添加方法
+             */
+             Dog.prototype = {
+                 run: function(){
+                     alert(this.name + "会飞快的奔跑");
+                 },
+                 showSelf: function(){
+                     alert(`这是一个${this.type}的，${this.age}岁的，叫${this.name}的小狗`);
+                 }
+             }
+             /* 
+                分类更加细分的构造函数。继承
+              */
+            function Teddy({name, type, age, color}){
+                //this = new Object();
+                //1、继承父一级构造函数所有的属性
+                //构造函数的伪装
+                Dog.call(this, {
+                    name: name,
+                    type: type,
+                    age: age
+                })
+                //添加自己的属性
+                this.color = color;
+
+                //return this;
+            }
+
+            /* 
+                原型链继承
+             */
+            // Teddy.prototype = Dog.prototype;  非常错误的写法
+            for(var funcName in Dog.prototype){
+                Teddy.prototype[funcName] = Dog.prototype[funcName];
+            }
+
+
+            Teddy.prototype.showColor = function(){
+                alert(this.color);
+            }
+
+
+            var xiaohong = new Teddy({
+                name: "小红",
+                type: "泰迪",
+                age: 10,
+                color: "红色"
+            })
+
+            xiaohong.showSelf();
+            xiaohong.showColor();
+
+            var xiaohei = new Dog({
+                name: "小黑",
+                type: "拉布拉多",
+                age: 5
+            });
+            alert(xiaohei.showColor);
+        </script>
+    </head>
+    <body>
+        
+    </body>
+</html>

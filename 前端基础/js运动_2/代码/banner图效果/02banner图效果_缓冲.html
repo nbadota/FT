@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>Document</title>
+        <style>
+            *{margin: 0px; padding: 0px}
+            #ul1 li{list-style: none; width: 200px; height: 200px; margin: 10px; float: left;}
+            #ul1 li img{width: 100%; height: 100%}
+            #ul1 {position: absolute; left: 0px}
+            #div1{width: 880px; height: 220px; border: 1px solid black; margin: 150px auto; position: relative; overflow: hidden;}
+        </style>
+        <script src = "../startMove.js"></script>
+        <script>
+            window.onload = function(){
+                var oUl1 = document.getElementById("ul1");
+                var oDiv1 = document.getElementById("div1");
+
+                /* 
+                    直接把这四张图片再添加到末尾
+                */
+                oUl1.innerHTML += oUl1.innerHTML;
+                //重新设置一下ul的宽
+                oUl1.style.width = 220 * 8 + 'px';
+
+                setInterval(function(){
+                    //让ul向左运动一个图片的宽
+                    startMove(oUl1, {left: oUl1.offsetLeft - 220}, function(){
+                        if(oUl1.offsetLeft <= -oUl1.offsetWidth / 2){
+                            oUl1.style.left = "0px";
+                        }
+                    })
+                }, 2000);
+            }
+        </script>
+    </head>
+    <body>
+        <div id = 'div1'>
+            <ul id = 'ul1'>
+                <li>
+                    <img src="img/1.jpg" alt=""/>
+                </li>
+                <li>
+                    <img src="img/2.jpg" alt=""/>
+                </li>
+                <li>
+                    <img src="img/3.jpg" alt=""/>
+                </li>
+                <li>
+                    <img src="img/4.jpg" alt=""/>
+                </li>
+            </ul>
+        </div>
+    </body>
+</html>

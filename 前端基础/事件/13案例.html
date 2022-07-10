@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>Document</title>
+        <style>
+            *{margin: 0px; padding: 0px}
+            #div1{width: 100px; height: 100px; position: absolute; background-color: olive}
+        </style>
+        <script src = 'tool.js'></script>
+        <script>
+            /* 
+                1、按下键盘上的方向键，让其按照我按的方向键进行移动
+                2、如果按下了shift + 方向键  速度*10
+             */
+            window.onload = function(){
+                var oDiv = document.getElementById("div1");
+                window.onkeydown = function(ev){
+                    var e = ev || window.event;
+                    var which = e.which || e.keyCode;
+
+                    var speed = 5;
+                    if(e.shiftKey){
+                        speed *= 10;
+                    }
+
+                    
+                    if(e.ctrlKey && which == 67){
+                        oDiv.style.backgroundColor = randomColor();
+                    }
+
+                    switch(which){
+                        case 37://左
+                            oDiv.style.left = oDiv.offsetLeft - speed + 'px';
+                            break;
+                        case 38:
+                            oDiv.style.top = oDiv.offsetTop - speed + 'px';
+                            break;
+                        case 39:
+                            oDiv.style.left = oDiv.offsetLeft + speed + 'px';
+                            break;
+                        case 40:
+                            oDiv.style.top = oDiv.offsetTop + speed + 'px';
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <!-- 小人gif图片 -->
+        <div id = 'div1'></div>
+    </body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>Document</title>
+        <style>
+            *{margin: 0px; padding: 0px}
+            #menu{width: 100px; height: 200px; background-color: gray; position: absolute; left: -100px; top: 200px}
+            #menu span{width: 20px; height: 60px; line-height: 20px; background-color: yellow; position: absolute; left: 100px; top: 70px}
+        </style>
+        <script>
+            window.onload = function(){
+                var oMenu = document.getElementById("menu");
+                oMenu.onmouseenter = function(){
+                    //-100 => 0
+                    startMove();
+                }
+
+                oMenu.onmouseleave = function(){
+                    //0 => -100
+                    startMove2();
+                }
+
+                var timer = null;
+                function startMove(){
+                    var oMenu = document.getElementById("menu");
+                    var speed = 10;
+                    //1、每次启动定时器将上一次定时器关闭
+                    clearInterval(timer);
+                    timer = setInterval(function(){
+                        //2、运动和停止分开
+                        if(oMenu.offsetLeft == 0){
+                            clearInterval(timer);
+                        }else{
+                            oMenu.style.left = oMenu.offsetLeft + speed + 'px';
+                        }
+                    }, 30);
+                }
+
+                function startMove2(){
+                    var oMenu = document.getElementById("menu");
+                    var speed = -10;
+                    //1、每次启动定时器将上一次定时器关闭
+                    clearInterval(timer);
+                    timer = setInterval(function(){
+                        //2、运动和停止分开
+                        if(oMenu.offsetLeft == -100){
+                            clearInterval(timer);
+                        }else{
+                            oMenu.style.left = oMenu.offsetLeft + speed + 'px';
+                        }
+                    }, 30);
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div id = 'menu'>
+            <span>分享到</span>
+        </div>
+    </body>
+</html>

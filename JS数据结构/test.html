@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        html body {
+            height: 100%;
+            width: 100%;
+        }
+        .content {
+            height: 500px;
+            width: 100%;
+            display: flex;
+            display: none;
+        }
+        .a {
+            width: 200px;
+            background-color: #00b38a;
+            //display: none;
+        }
+        .b {
+            flex: 1;
+            background-color: #d94b01;
+        }
+        .c {
+            width: 100px;
+            background-color: #282c34;
+        }
+        .outer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100px;
+            background-color: #d94b01;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <section class="content">
+        <article id="a" class="a"></article>
+        <article class="b"></article>
+        <article class="c"></article>
+    </section>
+    <div class="outer">
+        <div class="inner">11111111</div>
+    </div>
+</div>
+</body>
+<script>
+</script>
+</html>

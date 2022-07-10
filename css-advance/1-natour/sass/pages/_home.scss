@@ -1,0 +1,49 @@
+.section-about {
+  background-color: $color-gery-light-1;
+  padding: 250px 0;
+  margin-top: -20vh;
+}
+
+.section-features {
+  padding: 200px 0;
+  background-image: linear-gradient(to right bottom,
+          rgba($color-primary-light, 0.8),
+          rgba($color-primary-dark, 0.8)),
+  url("../img/hero.jpg");
+  background-size: cover;
+  transform: skewY(-7deg);
+  margin-top: -100px;
+  & > * {
+    transform: skewY(7deg);
+  }
+}
+
+.section-tours {
+  background-color: $color-gery-light-1;
+  margin-top: -100px;
+  padding: 250px 0 130px 0;
+}
+
+.section-stories {
+  position: relative;
+  background-color: $color-gery-light-1;
+  padding: 150px 0;
+}
+
+.section-book {
+  padding: 150px 0;
+  background-image: linear-gradient(to right bottom, $color-primary-light, $color-primary-dark);
+}
+
+.book {
+  background-image: linear-gradient(105deg, rgba($color-white, .8) 0%,
+  rgba($color-white, .8) 50%, transparent 50%), url("../img/hero.jpg");
+  background-size: cover;
+  box-shadow: 0 15px 40px rgba($color-dark, .2);
+  height: 500px;
+
+  &__form {
+    width: 50%;
+    padding: 60px;
+  }
+}

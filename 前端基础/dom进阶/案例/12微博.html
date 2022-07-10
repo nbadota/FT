@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>Document</title>
+        <style>
+            *{margin: 0px; padding: 0px}
+            #div1{width: 300px; height: 300px; background-color: black; position: absolute; left: 100px; top: 100px; display: none}
+            #div1 .title{width: 300px; height: 50px; background-color: gray}
+            #div1 .title button{height: 50px; font-size: 18px;}
+            #close{position: absolute; right: 0px}
+            #txt1{width: 298px; height: 248px;}
+            #div2{width: 400px; height: 600px; margin: 50px auto; border: 1px solid black; }
+            #div2 div{border-bottom: 1px dashed black; padding: 2px; position: relative;}
+            #div2 div button{position: absolute; right: 0px}
+        </style>
+        <script src = 'tool.js'></script>
+        <script>
+            function $(id){
+                return document.getElementById(id);
+            }
+
+            window.onload = function(){
+                $("issue").onclick = function(){
+                    $("div1").style.display = 'block';
+                }
+
+                $("close").onclick = function(){
+                    $("div1").style.display = 'none';
+                }
+
+                $("submit").onclick = function(){
+                    if(!$("txt1").value){
+                        alert("请输入内容");
+                    }else{
+                        var newDiv = document.createElement("div");
+                        newDiv.style.backgroundColor = randomColor();
+                        var oText = document.createTextNode($("txt1").value);
+                        var oBtn = document.createElement("button");
+                        oBtn.innerHTML = "X";
+
+                        //添加点击事件
+                        oBtn.onclick = function(){
+                            $("div2").removeChild(this.parentNode);
+                        }
+
+
+                        newDiv.appendChild(oText);
+                        newDiv.appendChild(oBtn);
+                        $("div2").appendChild(newDiv);
+
+                        $("txt1").value = "";
+                    }
+                }
+
+            }
+        </script>
+    </head>
+    <body>
+        <button id = 'issue'>发布</button>
+        <div id = 'div1'>
+            <div class = 'title'>
+                <button id = 'submit'>提交</button>
+                <button id = 'close'>X</button>
+            </div>
+            <textarea name="" id="txt1" cols="30" rows="10"></textarea>
+        </div>
+        <div id = 'div2'>
+            <!-- <div>假数据<button>X</button></div>
+            <div>假数据<button>X</button></div> -->
+        </div>
+    </body>
+</html>

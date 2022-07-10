@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>Document</title>
+        <script>
+            /* 
+                元字符：在正则表达式中有特殊含义的字符。
+
+                单个数字和字符的元字符
+                    .          匹配单个的任意字符
+                    [范围]         匹配单个范围内的字符
+                    [0-9]
+                    [a-zA-Z0-9_] 匹配单个的数字、字母下划线
+                    [^范围]        匹配任意一个除括号范围内的字符
+                    [^0-9]     匹配任意一个非数字字符
+                    \w         匹配单个的数字、字母下划线  等价于 [a-zA-Z0-9_]
+                    \W         匹配单个非数字、字母下划线
+                    \d         匹配单个数字  等价于 [0-9]
+                    \D         匹配单个非数字  等价于 [^0-9]
+
+
+                空白字符
+                    \s   匹配任意单个的空白字符
+                    \S   匹配任意单个非空白字符
+
+                
+                重复字符  x（任意的单个字符）
+                    x?    匹配0个或者1个x
+                    x+    匹配至少一个x字符
+                    x*    匹配任意个x字符
+                    x{m,n}匹配至少m个，最多n个x字符，包括n
+                    x{n}  必须匹配n个x字符
+                    (xyz)+ 小括号括起来的部分是当做单个字符处理
+                
+                锚字符
+                    ^  行首匹配  必须以这个正则开头
+                    $  行尾匹配  必须以这个正则结尾
+             */
+
+             /*var str = "goo12le";
+             var box = /goo\d{2}le/;
+             alert(box.test(str));*/
+
+            /*  var str = "googabcabcabcle";
+             var box = /goog(abc)+le/;
+             alert(box.test(str)); */
+
+             var str = "goog\nle";
+             alert(str);
+             var box = /goog\sle/;
+             alert(box.test(str));
+
+             /*var str = "google";
+             var box = /^google$/;
+             alert(box.test(str));*/
+
+
+             var box = /^[1-9]\d{5}$/;
+        </script>
+    </head>
+    <body>
+        
+    </body>
+</html>

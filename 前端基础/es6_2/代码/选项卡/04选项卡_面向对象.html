@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>Document</title>
+        <style>
+            #div1 button{width: 100px; height: 30px;background-color: gray; color: white; font-size: 18px}
+            #div1 .active{background-color: orange; color: blue}
+            #div1 div{width: 340px; height: 300px; border: 1px solid black; display: none}
+            #div2{position: absolute; left: 500px; }
+            #div2 button{width: 100px; height: 30px;background-color: gray; color: white; font-size: 18px}
+            #div2 .active{background-color: orange; color: blue}
+            #div2 div{width: 340px; height: 300px; border: 1px solid black; display: none}
+        </style>
+        <script>
+            function TabSwitch(id){
+                //添加属性
+                var node = document.getElementById(id);
+                this.aBtns = node.getElementsByTagName("button");
+                this.aDivs = node.getElementsByTagName("div");
+
+                var _this = this;
+
+                //将点击按钮，进行切换的方法添加给每一个按钮
+                for(var i = 0; i < this.aBtns.length; i++){
+                    //找到当前按钮下标
+                    this.aBtns[i].index = i;
+                    this.aBtns[i].onclick = function(){
+                        _this.tab(this);
+                    };
+                }
+
+            }
+
+            //添加方法
+            TabSwitch.prototype.tab = function(oBtn){
+                //清除页面上所有按钮和所有div的样式
+                for(var i = 0; i < this.aBtns.length; i++){
+                    this.aBtns[i].className = '';
+                    this.aDivs[i].style.display = 'none';
+                }
+                //获取当前点击的按钮
+                oBtn.className = 'active';
+                this.aDivs[oBtn.index].style.display = 'block';
+            }
+
+            window.onload = function(){
+                new TabSwitch("div1");
+                new TabSwitch("div2");
+            }
+        </script>
+    </head>
+    <body>
+            <div id = 'div1'>
+                    <button class = 'active'>HTML5</button>
+                    <button>Python</button>
+                    <button>Java</button>
+                    <div style = 'display: block'>HTML5是Web中核心语言HTML的规范，用户使用任何手段进行网页浏览时看到的内容原本都是HTML格式的，在浏览器中通过一些技术处理将其转换成为了可识别的信息。HTML5在从前HTML4.01的基础上进行了一定的改进，虽然在技术人员在开发过程中可能不会将这些新技术投入应用，但是对于该种技术的新特性网站开发技术人员是必须要有所了解的</div>
+                    <div>Python是一种计算机程序设计语言。是一种面向对象的动态类型语言，最初被设计用于编写自动化脚本(shell)，随着版本的不断更新和语言新功能的添加，越来越多被用于独立的、大型项目的开发。</div>
+                    <div>Java是一门面向对象编程语言，不仅吸收了C++语言的各种优点，还摒弃了C++里难以理解的多继承、指针等概念，因此Java语言具有功能强大和简单易用两个特征。Java语言作为静态面向对象编程语言的代表，极好地实现了面向对象理论，允许程序员以优雅的思维方式进行复杂的编程</div>
+            </div>
+            <div id = 'div2'>
+                    <button class = 'active'>HTML5</button>
+                    <button>Python</button>
+                    <button>Java</button>
+                    <div style = 'display: block'>HTML5是Web中核心语言HTML的规范，用户使用任何手段进行网页浏览时看到的内容原本都是HTML格式的，在浏览器中通过一些技术处理将其转换成为了可识别的信息。HTML5在从前HTML4.01的基础上进行了一定的改进，虽然在技术人员在开发过程中可能不会将这些新技术投入应用，但是对于该种技术的新特性网站开发技术人员是必须要有所了解的</div>
+                    <div>Python是一种计算机程序设计语言。是一种面向对象的动态类型语言，最初被设计用于编写自动化脚本(shell)，随着版本的不断更新和语言新功能的添加，越来越多被用于独立的、大型项目的开发。</div>
+                    <div>Java是一门面向对象编程语言，不仅吸收了C++语言的各种优点，还摒弃了C++里难以理解的多继承、指针等概念，因此Java语言具有功能强大和简单易用两个特征。Java语言作为静态面向对象编程语言的代表，极好地实现了面向对象理论，允许程序员以优雅的思维方式进行复杂的编程</div>
+            </div>
+    </body>
+</html>

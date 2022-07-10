@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>Document</title>
+        <script>
+            /* 
+                this概念：只要封装函数，任何一个函数系统都会内置一个叫做this的变量，
+                         this变量存储的是地址，是当前函数主人的地址。
+
+                    【注】this永远指向当前函数的主人。函数的主人要通过当前上下文去判断。
+
+                this类似于现实生活中，用到的"我"。
+                
+            */
+
+            /* 
+                常用的情况：
+            */
+            var person = {
+                username: "钢铁侠",
+                sex: "男",
+                show: function(){
+                    alert(person.username);
+                    alert(this.username);
+                }
+            };
+
+            //给对象添加方法
+            person.xxx = function(){
+                
+            }
+
+            // person.show();
+
+
+            function show(){
+                alert(this);
+            }
+
+            /* show();
+            window.show(); */
+
+
+            window.onload = function(){
+                var oBtn = document.getElementById("btn1");
+                oBtn.onclick = function(){
+                    alert(this);
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <button id = 'btn1'>按钮</button>
+    </body>
+</html>

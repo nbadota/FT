@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>Document</title>
+        <script>
+            // alert(window.location === window.document.location);
+            /* 
+                location  地址栏
+
+                属性：
+                方法：
+                    location.assign(url)
+                    【注】在当前窗口跳转带这个url
+                    location.replace(url)
+                    【注】在当前窗口替换成新的url。不会产生历史记录。
+                    location.reload()
+                    【注】刷新窗前窗口
+                    location.reload(true)   不经过浏览器缓存强制从服务器重载
+                    
+             */
+        </script>
+    </head>
+    <body>
+        <button onclick = "location.assign('https://www.baidu.com')">assign</button>
+        <button onclick = "location.replace('https://www.baidu.com')">replace</button>
+        <button onclick = 'location.reload(true)'>reload</button>
+    </body>
+</html>

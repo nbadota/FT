@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>Document</title>
+        <style>
+            *{margin: 0px; padding: 0px}
+            div{width: 50px; height: 50px; border-radius: 50%; position: absolute}
+            #div1{background-color: red; left: 200px; top: 200px;}
+            #div2{background-color: blue; left: 600px; top: 400px}
+            #ul1 li{list-style: none; width: 5px; height: 5px; position: absolute; background-color: black}
+        </style>
+        <script src = 'jquery-1.10.1.min.js'></script>
+        <script src = 'parabola.js'></script>
+        <script>
+            window.onload = function(){
+                var oDiv1 = document.getElementById("div1");
+                var oDiv2 = document.getElementById("div2");
+                var aBtns = document.getElementsByTagName("button");
+                var oul1 = document.getElementById("ul1");
+
+                /* 
+                    创建一个抛物线对象
+                 */
+                var bool = new Parabola({
+                    el: "#div1",
+                    targetEl: "#div2",
+                    duration: 2000,
+                    curvature: 0.003,
+                    callback: function(){
+                        alert("动画结束了");
+                    },
+                    stepCallback: function(){
+                        //在整个运动中不停的调用
+                        var node = document.createElement("li");
+                        node.style.left = oDiv1.offsetLeft + 'px';
+                        node.style.top = oDiv1.offsetTop + 'px';
+                        oul1.appendChild(node);
+                    }
+
+                })
+
+
+                aBtns[0].onclick = function(){
+                    bool.start();
+                }
+                aBtns[1].onclick = function(){
+                    bool.stop();
+                }
+                aBtns[2].onclick = function(){
+                    bool.reset();
+                }
+                aBtns[3].onclick = function(){
+                    bool.setOptions({
+                        targetEl: null,
+                        offset: [500, 300]
+                    })
+                }
+
+            }
+        </script>
+    </head>
+    <body>
+        <button>开始</button>
+        <button>暂停</button>
+        <button>重置</button>
+        <button>重置参数</button>
+        <div id = 'div1'></div>
+        <div id = 'div2'></div>
+        <ul id = 'ul1'></ul>
+    </body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>Document</title>
+        <script>
+            /*
+                attributes  获取当前元素节点上的所有的属性节点
+
+                集合：
+                    1、无序
+                    2、不重复
+            */
+            window.onload = function(){
+                var oDiv = document.getElementById("div1");
+                console.log(oDiv.attributes);
+                let a = oDiv.attributes;
+                for (let key in a) {
+                    console.log(key)
+                }
+
+                //获取其中的某一个属性节点
+
+                //title = hello
+                /* alert(oDiv.attributes.getNamedItem("title").nodeName);
+                alert(oDiv.attributes.getNamedItem("title").nodeType);
+                alert(oDiv.attributes.getNamedItem("title").nodeValue); */
+
+                alert(oDiv.attributes["title"].nodeName);
+                alert(oDiv.attributes["title"].nodeType);
+                alert(oDiv.attributes["title"].nodeValue);
+
+            }
+        </script>
+    </head>
+    <body>
+        <div id = 'div1' title = 'hello' class = 'box'>div文本</div>
+    </body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>Document</title>
+        <style>
+            #div1{width: 100px; height: 100px; background-color: red; position: absolute;}
+            #div2{width: 100px; height: 100px; background-color: blue; position: absolute; left: 400px}
+        </style>
+        <script src = 'tool.js'></script>
+        <script>
+            /* 
+                拖拽：（拖拽的三剑客）  伪代码(代码草稿)
+                    mousedown
+                        记录鼠标按下位置和被拖拽物体相对距离
+                        var offsetX = e.clientX - node.offsetLeft;
+                        var offsetY = e.clientY - node.offsetTop;
+                    mousemove
+                        一致保持，相对距离
+                        node.style.left = e.clientX - offsetX + 'px';
+                        node.style.top = e.clientY - offsetY + 'px';
+                    mouseup
+                        取消拖拽
+             */
+             window.onload = function(){
+                 var oDiv1 = document.getElementById("div1");
+                 var oDiv2 = document.getElementById("div2");
+                 limitDrag(oDiv1);
+                 drag(oDiv2);
+             }
+             
+        </script>
+    </head>
+    <body>
+        <div id = 'div1'></div>
+        <div id = 'div2'></div>
+    </body>
+</html>

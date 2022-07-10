@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>Document</title>
+        <style>
+            div{width: 100px; height: 100px; background-color: red; margin: 20px; opacity: 0.3; filter: alpha(opacity=30);} 
+        </style>
+        <script>
+            window.onload = function(){
+                var aDivs = document.getElementsByTagName("div");
+
+                /* 
+                    链式运动：
+                        在第一个动画结束的时候，开始第二个动画。
+                    【注】关键点，找到第一个动画结束的时候。
+                */
+                aDivs[0].onclick = function(){
+                    
+                    startMove(this, "width", 300, show);
+
+
+                    function show(){
+                        alert(this);
+                        alert("运动结束了");
+                    }
+                    
+                }
+            }
+
+            /* 
+                回调函数：我们把函数当做参数传入，并且在合适调用的方式，叫做回调函数。在别的编程语言(C语言、C++)叫做函数指针。
+            */
+            
+            function startMove(node, attr, iTarget, complete){//complete = show;
+                clearInterval(node.timer);
+                node.timer = setInterval(function(){
+                    //计算速度
+                    var iCur = null;
+                    if(attr == "opacity"){
+                        iCur = parseInt(parseFloat(getStyle(node, "opacity")) * 100);
+                    }else{
+                        iCur = parseInt(getStyle(node, attr))
+                    }
+                    
+                    var speed = (iTarget - iCur) / 8;
+                    speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+
+                    if(iCur == iTarget){
+                        clearInterval(node.timer);
+                        if(complete){
+                            complete.call(node);
+                        }
+                        // alert("运动结束了");
+                        /* 
+                            当运动结束以后，应该做什么的代码在这里不能写死。
+                            【注】封装函数，形参，根据函数不确定的值决定的。
+                            可以，将一段代码编写的权利交给别人。声明一个形参，这个形参是用来接收，从外面封装好的一个函数的。
+                        */
+                    }else{
+                        if(attr == "opacity"){
+                            iCur += speed;
+                            node.style.opacity = iCur / 100;
+                            node.style.filter = "alpha(opacity=" + iCur +  ")";
+                        }else{
+                            node.style[attr] = iCur + speed + 'px';
+                        }
+                    }
+                }, 30);
+            }
+
+            //获取当前有效样式浏览器兼容的写法
+            function getStyle(node, cssStr){
+                return node.currentStyle ? node.currentStyle[cssStr] : getComputedStyle(node)[cssStr];
+            }
+        </script>
+    </head>
+    <body>
+        <div></div>
+      
+    </body>
+</html>

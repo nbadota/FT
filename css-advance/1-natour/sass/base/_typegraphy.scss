@@ -1,0 +1,66 @@
+body {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.7;
+  color: $color-gery-dark;
+  padding: 30px;
+}
+
+.heading-primary {
+  color: $color-white;
+  text-transform: uppercase;
+  backface-visibility: hidden;
+  margin-bottom: 60px;
+
+  &--main {
+    display: block;
+    font-size: 60px;
+    font-weight: 400;
+    letter-spacing: 35px;
+    animation-name: moveInLeft;
+    animation-duration: 3s;
+    animation-timing-function: ease-out;
+  }
+
+  &--sub {
+    display: block;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 17px;
+    animation-name: moveInRight;
+    animation-duration: 3s;
+    animation-timing-function: ease-out;
+  }
+}
+
+.heading-secondary {
+  display: inline-block;
+  font-size: 35px;
+  text-transform: uppercase;
+  font-weight: 700;
+  background-image: linear-gradient(to right, $color-primary-light, $color-primary-dark);
+  -webkit-background-clip: text;
+  color: transparent;
+  letter-spacing: 2px;
+  transition: all .3s;
+
+  &:hover {
+    transform: skewY(2deg) skewX(15deg) scale(1.1);
+    text-shadow: 5px 10px 20px rgba($color-dark, .2);
+  }
+}
+
+.heading-tertiary {
+  font-size: $default-font-size;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.paragraph {
+  font-size: $default-font-size;
+
+  &:not(:last-child) {
+    margin-bottom: 30px;
+  }
+}

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    #box{ width:300px; height:300px; border:1px black solid; margin:20px auto; display: flex;}
+    #box div{ width:50px; height:50px; color:white; line-height: 50px; text-align: center; background:red;}
+    /* #box div:nth-child(2){ order:1;}
+    #box div:nth-child(3){ order:-1;} */
+    #box div:nth-child(2){ background:yellow; color:black; flex-grow: 1;}
+    #box div:nth-child(3){ background:blue; color:black; flex-grow: 2;}
+
+    #box2{ width:300px; height:300px; border:1px black solid; margin:20px auto; display: flex; align-items: flex-end;}
+    #box2 div{ width:50px; color:white; line-height: 50px; text-align: center; background:red;}
+    #box2 div:nth-child(2){ background:yellow; color:black; /* flex:1;  *//* flex-basis: 250px; */ /* flex-shrink: 2; */ align-self: center;}
+    #box2 div:nth-child(1){ align-self: center;}
+    </style>
+</head>
+<body>
+    <!-- <div id="box">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+    </div> -->
+
+    <div id="box2">
+        <div>1</div>
+        <div>测试文字</div>
+        <div>3</div>
+        <div>4</div>
+    </div>
+</body>
+</html>

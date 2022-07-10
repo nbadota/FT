@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>Document</title>
+        <style>
+            #div1{width: 200px; height: 200px; background-color: red; position: absolute}
+            #div2{width: 100px; height: 100px; background-color: orange; position: absolute; left: 500px}
+        </style>
+        <script src = 'drag.js'></script>
+        <script src = 'limitDrag.js'></script>
+        <script>
+            /* 
+                改造
+                    1、不能有函数嵌套
+                    2、可以有全局变量
+
+                面向过程 => 面向对象
+                    1、window.onload => 构造函数
+                    2、全局变量 => 构造函数的属性
+                    3、全局函数 => 构造函数的方法
+             */
+            // var oDiv = null;
+            // var offsetX = 0;
+            // var offsetY = 0;
+
+
+            /* 
+                new Drag(id);
+            */
+
+            window.onload = function(){
+                new Drag("div1");
+                new LimitDrag("div2");
+            }
+        </script>
+    </head>
+    <body>
+        <div id = 'div1'></div>
+        <div id = 'div2'></div>
+    </body>
+</html>

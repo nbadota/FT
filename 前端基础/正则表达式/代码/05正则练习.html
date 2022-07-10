@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>Document</title>
+        <script>
+            /* 
+                文件是否是压缩包
+                zip  rar  gz
+
+                转义字符：
+                    \.  代表本来.字符的意思
+                    \*  代表本来*字符的意思
+            */
+          /*  var box = /^\w+\.(zip|rar|gz)$/;
+
+           alert(box.test("hello.zip")) */
+
+           /* 
+                验证是否是正确的手机号码
+           */
+        //   var box = /^1\d{10}$/;
+
+
+        /* 
+            验证是否是正确的身份证号码
+        */
+        // var box = /^[1-9]\d{16}(\d|x)$/;
+
+
+        /* 
+            验证字符串是否是纯中文
+        */
+        var box = /^[\u4e00-\u9fa5]+$/;
+        alert(box.test("我爱北京啊大大"))
+            
+        </script>
+    </head>
+    <body>
+        
+    </body>
+</html>

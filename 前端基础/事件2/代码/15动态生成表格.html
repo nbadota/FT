@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>Document</title>
+        <style>
+            #t1 tr td{width: 100px; height: 30px}
+            .box0{background-color: red}
+            .box1{background-color: blue}
+        </style>
+        <script>
+            window.onload = function(){
+                var oRow = document.getElementById("row");
+                var oCol = document.getElementById("col");
+                var oBtn = document.getElementById("btn1");
+                var oT1 = document.getElementById("t1");
+
+                //给表格上的删除按钮添加事件委托
+                oT1.onclick = function(ev){
+                    var e = ev || window.event;
+                    var target = e.target || window.event.srcElement;
+                    if(target.nodeName.toLowerCase() == "button"){
+                        oT1.removeChild(target.parentNode.parentNode);
+                    }
+                }
+
+
+                oBtn.onclick = function(){
+                    if(!oRow.value || !oCol.value){
+                        alert("请输入对应的行列，生成表格");
+                    }else{
+                        //行
+                        for(var i = 0; i < oRow.value; i++){
+                            var oTr = document.createElement("tr");
+                            oTr.className = "box" + (i % 2);
+                            for(var j = 0; j < oCol.value; j++){
+                                var oTd = document.createElement("td");
+                                oTr.appendChild(oTd);
+                            }
+
+                            //添加一个删除按钮
+                            var oClose = document.createElement("td");
+                            oClose.innerHTML = "<button>删除</button>";
+                            oTr.appendChild(oClose);
+                            oT1.appendChild(oTr);
+                        }
+                    }
+                }
+
+
+            }
+        </script>
+    </head>
+    <body>
+        <input type="text" placeholder="行" id = 'row'/>
+        <input type="text" placeholder="列" id = 'col'/>
+        <button id = 'btn1'>生成</button>
+        <table id = 't1' border = '1'>
+           
+        </table>
+    </body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>Document</title>
+        <script>
+            /* 
+                Symbol 
+                【注】通过Symbol声明的数据只和自己相等，和其他任何数据都不相等。
+                【注】让你的程序变得可读性更强，更加形象化的。
+            */
+           /* var a = Symbol();
+           var b = Symbol();
+           var c = Symbol(100);
+           var d = Symbol(100);
+           var e = Symbol("hello");
+           var f = Symbol("hello"); */
+
+           /* alert(a == b);
+           alert(c == d);
+           alert(e == f); */
+
+        //    alert(a == a);
+
+
+            /* 
+                选车的颜色
+            */
+           var RED = Symbol("红色");
+           var BLUE = Symbol("蓝色");
+           var BLACK = Symbol("黑色");
+
+           var color = BLUE;
+           switch(color){
+                case RED:
+                    alert("恭喜王总，喜提红色小跑");
+                   break;
+                case BLUE:
+                    alert("恭喜王总，喜提蓝色小跑");
+                    break;
+                case BLACK:
+                    alert("恭喜王总，喜提黑色小跑");
+                    break;
+           }
+        </script>
+    </head>
+    <body>
+        
+    </body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>Document</title>
+        <style>
+            *{margin: 0px; padding: 0px}
+            #div1{width: 200px; height: 200px; background-color: red; position: relative; display: none}
+            #div2{width: 50px; height: 50px; background-color: yellow; position: absolute; right: 0px; bottom: 0px}
+            #div3{width: 100px; height: 100px; background-color: blue; position: absolute; right: 0px; top: 0px}
+        </style>
+        <!-- 
+            defer IE兼容的异步加载js文件
+            data-main = "入口文件"
+
+         -->
+        <script src = 'js/require.js' async = 'true' defer data-main = "js/xxx"></script>
+    </head>
+    <body>
+        <button id = 'btn1'>显示控件</button>
+        <div id = 'div1'>
+            <div id = 'div2'></div>
+        </div>
+        <div id = 'div3'></div>
+    </body>
+</html>
